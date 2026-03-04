@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+        box-sizing: border-box;
+}
+header, main, footer{ 
+     display: flex;
+    flex-direction: column;
+   
+}
+
+header{
+    
+    width: 100%;
+    padding: 0px 0px;
+    position: absolute;
+}
+
+body{
+    background-color: rgb(249, 249, 234);
+    line-height: 1.6;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    
+}
+
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logotext{
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    position: relative;
+    padding: 5px 0;
+     transition: all 0.3s ease;
+}
+
+
+ nav a::after {
+    content: '';
+    height: 2px;
+    background-color: dimgray;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 0;
+     transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.signin, .cart{
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.signin{
+   background-color: transparent;
+   border: 2px solid dimgray;;
+} 
+.signin:hover{
+    background-color: rgb(136, 82, 82);
+    transform: translateY(-2px);
+}
+
+.cart{
+    background-color:dimgray;
+}
+.cart:hover{
+    background-color: rgb(136, 82, 82);
+    transform: translateY(-2px);
+}
+
+.hero{
+height: 100vh;
+width: 100vw;
+overflow: hidden;
+}
+
+.hero-container{
+   background-image: url('Realistic Dewy Skin 2.png');
+    background-size: cover; /* This makes it fit the whole area without stretching */
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    width: 100%; /* Adjust this so it fills most of the screen */;
+    height: 100%; /* Adjust this so it fills most of the screen */; 
+    align-items: center;
+    justify-content: flex-start;
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    color: rgb(0, 0, 0);
+    text-align:left ;
+    padding: 20px; /* Optional: adds rounded corners to the content box */
+}
+.hero-title span {
+    color: rgb(136, 82, 82); /* Uses your header's brown for 'Radiant Skin' */
+}
+
