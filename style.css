@@ -8,7 +8,7 @@ header, main, footer{
     flex-direction: column;
    
 }
-
+/*first page---------------------------------------------------------------------------------------------------------------------------------------------------*/
 header{
     
     width: 100%;
@@ -39,7 +39,7 @@ body{
 
 .logotext{
     color: rgb(0, 0, 0);
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
 }
 
@@ -52,7 +52,7 @@ nav ul{
 nav a{
     text-decoration: none;
     color: black;
-    font-size: 18px;
+    font-size: 22px;
     position: relative;
     padding: 5px 0;
      transition: all 0.3s ease;
@@ -74,7 +74,12 @@ nav a:hover::after {
     width: 100%;
 }
 
-.signin, .cart{
+.nav-buttons{
+    display: flex;
+    gap: 10px;
+}    
+
+.btn-primary, .btn-secondary{
     display: inline-block;
     padding: 8px 20px;
     border-radius: 40px;
@@ -82,44 +87,45 @@ nav a:hover::after {
     border: none;
     font-weight: 900;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 22px;
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
 
-.signin{
-   background-color: transparent;
-   border: 2px solid dimgray;;
-} 
-.signin:hover{
-    background-color: rgb(136, 82, 82);
+.btn-primary {
+    background-color: transparent;
+    border: 2px solid dimgray;
+}
+.btn-primary:hover{
+    background-color: rgb(116, 104, 89);
     transform: translateY(-2px);
 }
 
-.cart{
+.btn-secondary{
     background-color:dimgray;
 }
-.cart:hover{
-    background-color: rgb(136, 82, 82);
+.btn-secondary:hover{
+    background-color: rgb(116, 104, 89);
     transform: translateY(-2px);
 }
 
 .hero{
 height: 100vh;
 width: 100vw;
-overflow: hidden;
 }
 
 .hero-container{
    background-image: url('Realistic Dewy Skin 2.png');
-    background-size: cover; /* This makes it fit the whole area without stretching */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    width: 100%; /* Adjust this so it fills most of the screen */;
-    height: 100%; /* Adjust this so it fills most of the screen */; 
+    width: 100%; 
+    height: 100%; 
     align-items: center;
     justify-content: flex-start;
+    transition: transform 0.2s ease-out;
+    transform-origin: center center;
 }
 .hero-content{
     display: flex;
@@ -128,19 +134,141 @@ overflow: hidden;
     max-width: 500px;
     color: rgb(0, 0, 0);
     text-align:left ;
-    padding: 20px; /* Optional: adds rounded corners to the content box */
+    padding: 20px;
 }
 .hero-title span {
-    color: rgb(136, 82, 82); /* Uses your header's brown for 'Radiant Skin' */
-}  
+    color: rgb(136, 82, 82); 
+}
 
-//lastpage 
-body { margin: 0; font-family: 'Inter', sans-serif; }
+/*LOGIN,SIGNUP---------------------------------------------------------------------------------------------------------------------------------------------------*/
+.split-layout{
+    display:flex;
+    height: 100vh;
+    padding-top: 65px;
+    
+}
+
+.panel-image{
+    width:55%;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.panel-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+    object-position: center top;
+}
+
+.panel-image:hover img{
+    transform: scale(1.1);
+}
+
+.panel-image .tagline{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    animation: fadeUp 0.9s 0.3s both;
+}
+.panel-image, .tagline strong{
+    font-weight: 700;
+}
+
+.panel-form{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 30px;
+    overflow-y: auto;
+    padding-top: 16px;
+}
+.panel-form-signup{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 30px;
+    overflow-y: auto;
+    padding-top: 100px;
+}
+
+.login-box, .signup-box{
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.login-title, .signup-title{
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: rgb(66, 66, 66);
+    text-align: center;
+}
+
+.login-form, .signup-form{
+    display: flex;
+    flex-direction: column;
+    font-weight:600 ;
+}
+
+.login-form label, .signup-form label{
+   font-size: 20px;
+   font-weight: 600;
+}
+
+.login-form input, .signup-form input{
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+    border-color: rgb(136, 82, 82);
+    box-shadow: 0 0 0 3px rgba(136, 82, 82, 0.12);
+}
+
+.form-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-links a {
+    font-size: 14px;
+    color: dimgray;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.form-links a:hover {
+    color: rgb(136, 82, 82);
+}
+
+/*lastpage---------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .footer {
   background-color: #111;
   color: #fff;
   padding: 80px 40px 20px 40px;
+   margin: 0; 
+   font-family: 'Inter', sans-serif;
 }
 
 .footer-top {
@@ -200,14 +328,11 @@ body { margin: 0; font-family: 'Inter', sans-serif; }
 .nav-col li { margin-bottom: 8px; }
 .nav-col a { color: #fff; text-decoration: none; font-size: 0.9rem; }
 
-/* The Giant Brand Text */
 .footer-brand h1 {
-  font-size: 18vw; /* Scales with screen width */
+  font-size: 18vw; 
   text-align: center;
   margin: 0;
   line-height: 0.8;
   letter-spacing: -0.05em;
   font-weight: 700;
 }
-
-
