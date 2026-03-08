@@ -17,3 +17,14 @@ window.addEventListener('scroll', function() {
     // Smooth transition effect
     hero.style.transition = 'background-size 0.1s ease-out';
  });
+//lastpage 
+window.addEventListener('scroll', () => {
+  const brand = document.querySelector('.footer-brand h1');
+  const triggerBottom = window.innerHeight / 5 * 4;
+  const brandTop = brand.getBoundingClientRect().top;
+
+  if(brandTop < triggerBottom) {
+    brand.style.transform = "translateY(0)";
+    brand.style.opacity = "1";
+  }
+});
