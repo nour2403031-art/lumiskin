@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiskin - Create Account</title>
+     <link rel="stylesheet" href="style.css">
+    <script src="js.js"></script> 
+</head>
+<body>
+    <header>
+             <div class="container"> 
+                <nav>
+                   <ul class="navbuttons">
+                   <li><a href="pr.html"><b>Home</b></a></li>
+                   <li><a href="#"><b>Products</b></a></li>
+                   <li><a href="#"><b>About</b></a></li>
+                  </ul>
+               </nav>
+   <a href="#" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>  
+
+       <div class="nav-buttons">
+          <a href="login.html" class="btn-secondary"><b>Account</b></a>
+          <a href="cart.html" class="btn-primary"><b>Cart</b></a><br>    
+       </div>  
+     </div>
+</header>
+
+  <div class="split-layout">
+
+    <div class="panel-image">
+      <img src="Upscaled Image (1).png" alt="Skincare">
+      <p class="tagline">It's time to invest in your <strong>SKIN.</strong></p>
+    </div>
+
+    <div class="panel-form-signup">
+        <div class="signup-box">
+
+          <div><h2 class="signup-title">Create Account</h2></div>
+
+          <div class="signup-body">
+           <form class="signup-form" onsubmit="return validatesignup()">
+
+            <label for="Fname">First Name</label>
+            <input type="text" name="Fname" id="Fname" placeholder="Enter your first name">
+
+            <label for="Lname">Last Name</label>
+            <input type="text" name="Lname" id="Lname" placeholder="Enter your last name">
+
+            <label for="Email">Email</label>
+            <input type="email" name="Email" id="Email" placeholder="Enter your email">
+
+            <label for="Password">Password</label>
+            <input type="password" name="Password" id="Password" placeholder="Min 8 chars, 1 uppercase, 1 number">
+
+            <label for="Confirm_Password">Confirm Password</label>
+            <input type="password" name="Confirm Password" id="Confirm_Password" placeholder="Repeat your password">
+
+            <button type="submit" class="btn-primary">Create Account</button>
+
+            <div class="form-links">
+              <p>Already have an account? <a href="login.html">Log in!</a></p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
