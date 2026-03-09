@@ -17,7 +17,7 @@ header{
 }
 
 body{
-    background-color: rgb(249, 249, 234);
+    background-color: rgb(233, 221, 206, 1);
     line-height: 1.6;
 }
 
@@ -38,8 +38,8 @@ body{
 }
 
 .logotext{
-    color: rgb(0, 0, 0);
-    font-size: 45px;
+    color: rgb(147, 97, 62);;
+    font-size: 60px;
     font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ nav ul{
 
 nav a{
     text-decoration: none;
-    color: black;
+    color: rgb(147, 97, 62);
     font-size: 22px;
     position: relative;
     padding: 5px 0;
@@ -62,7 +62,7 @@ nav a{
  nav a::after {
     content: '';
     height: 2px;
-    background-color: dimgray;
+    background-color: rgb(243, 241, 238,1);
     position: absolute;
     bottom:0;
     left: 0;
@@ -89,23 +89,24 @@ nav a:hover::after {
     transition: all 0.3s ease;
     font-size: 22px;
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(147, 97, 62);
 }
 
 .btn-primary {
     background-color: transparent;
-    border: 2px solid dimgray;
+    border: 2px rgb(245, 239, 239)
 }
 .btn-primary:hover{
-    background-color: rgb(116, 104, 89);
+    background-color: rgb(243, 241, 238,1);
     transform: translateY(-2px);
 }
 
 .btn-secondary{
-    background-color:dimgray;
+    background-color: transparent;
+    border: 2px rgb(245,239,239)
 }
 .btn-secondary:hover{
-    background-color: rgb(116, 104, 89);
+    background-color: rgb(243, 241, 238,1);
     transform: translateY(-2px);
 }
 
@@ -132,19 +133,19 @@ width: 100vw;
     flex-direction: column;
     gap: 20px;
     max-width: 500px;
-    color: rgb(0, 0, 0);
-    text-align:left ;
+    color: rgb(243, 241, 238,1);
+    text-align:left;
     padding: 20px;
 }
 .hero-title span {
-    color: rgb(136, 82, 82); 
+    color: rgba(243,241, 238, 1); 
 }
 
 /*LOGIN,SIGNUP---------------------------------------------------------------------------------------------------------------------------------------------------*/
 .split-layout{
     display:flex;
     height: 100vh;
-    padding-top: 65px;
+    padding-top: 90px;
     
 }
 
@@ -173,10 +174,10 @@ width: 100vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: rgb(243, 241, 238, 1);
     font-size: 24px;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 4px rgba(206, 175, 145, 1);
     animation: fadeUp 0.9s 0.3s both;
 }
 .panel-image, .tagline strong{
@@ -207,14 +208,16 @@ width: 100vw;
     max-width: 400px;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7);
+    background-color: rgb(214, 195, 180);
 }
 
 .login-title, .signup-title{
     font-size: 40px;
     font-weight: 800;
     margin-bottom: 30px;
-    color: rgb(66, 66, 66);
+    color: rgb(163, 108, 69, 1);
     text-align: center;
 }
 
@@ -240,8 +243,8 @@ width: 100vw;
 
 .login-form input:focus,
 .signup-form input:focus {
-    border-color: rgb(136, 82, 82);
-    box-shadow: 0 0 0 3px rgba(136, 82, 82, 0.12);
+    border-color: rgba(245, 239, 239 ,1);
+    box-shadow: 0 0 0 3px rgba(245, 239, 239, 1);
 }
 
 .form-links {
@@ -251,16 +254,15 @@ width: 100vw;
 
 .form-links a {
     font-size: 14px;
-    color: dimgray;
+    color: rgba(163, 108, 69, 1);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.2s;
 }
 
 .form-links a:hover {
-    color: rgb(136, 82, 82);
+    color: rgb(206, 175, 145,1);
 }
-
 /*lastpage---------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .footer {
@@ -335,4 +337,68 @@ width: 100vw;
   line-height: 0.8;
   letter-spacing: -0.05em;
   font-weight: 700;
+}
+
+/* Reviews Section - Lumiskin Theme */
+.reviews-page {
+    padding-top: 100px; /* Space for your absolute header */
+}
+
+.reviews .heading {
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.reviews .heading span {
+    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+}
+
+.reviews .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
+}
+
+.reviews .box {
+    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.reviews .box:hover {
+    transform: translateY(-5px);
+    border-color: dimgray; /* Matches your btn-primary border */
+    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+}
+
+.reviews .box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.reviews .box h3 {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0 5px;
+}
+
+.reviews .box .stars i {
+    font-size: 18px;
+    color: rgb(136, 82, 82); /* Reddish-brown stars */
+    margin-bottom: 10px;
+}
+
+.reviews .box p {
+    font-size: 16px;
+    color: dimgray;
+    line-height: 1.6;
 }
