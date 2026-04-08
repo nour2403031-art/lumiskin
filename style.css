@@ -91,8 +91,17 @@ nav a:hover::after {
     color: rgb(147, 97, 62);
 }
 
+<<<<<<< HEAD
 .btn-primary:hover{
     background-color: rgb(255, 255, 255);
+=======
+.btn-primary {
+    background-color: transparent;
+    border: 2px rgb(245, 239, 239)
+}
+.btn-primary:hover{
+    background-color: rgb(243, 241, 238,1);
+>>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
     transform: translateY(-2px);
 }
 
@@ -180,9 +189,15 @@ width: 100vw;
 /*LOGIN,SIGNUP---------------------------------------------------------------------------------------------------------------------------------------------------*/
 .split-layout{
     display:flex;
+<<<<<<< HEAD
     height: calc(100vh - 90px);
     margin-top: 90px;
     width: 100%;
+=======
+    height: 100vh;
+    padding-top: 90px;
+    
+>>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 .panel-image{
@@ -246,10 +261,13 @@ width: 100vw;
     border: 1px solid rgba(255, 255, 255, 0.9);
 box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7);
     background-color: rgb(214, 195, 180);
+<<<<<<< HEAD
 }
 
 .signup-box{
     margin-top: 150px;
+=======
+>>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 .login-title, .signup-title{
@@ -379,6 +397,73 @@ footer {
   letter-spacing: -0.05em;
   font-weight: 700;
   color: rgb(163, 108, 69,1);
+<<<<<<< HEAD
+=======
+}
+
+/* Reviews Section - Lumiskin Theme */
+.reviews-page {
+    padding-top: 100px; /* Space for your absolute header */
+}
+
+.reviews .heading {
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.reviews .heading span {
+    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+}
+
+.reviews .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
+}
+
+.reviews .box {
+    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.reviews .box:hover {
+    transform: translateY(-5px);
+    border-color: dimgray; /* Matches your btn-primary border */
+    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+}
+
+.reviews .box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.reviews .box h3 {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0 5px;
+}
+
+.reviews .box .stars i {
+    font-size: 18px;
+    color: rgb(136, 82, 82); /* Reddish-brown stars */
+    margin-bottom: 10px;
+}
+
+.reviews .box p {
+    font-size: 16px;
+    color: dimgray;
+    line-height: 1.6;
+>>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 /* Reviews Section - Lumiskin Theme */
