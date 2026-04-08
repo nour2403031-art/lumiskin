@@ -91,23 +91,20 @@ nav a:hover::after {
     color: rgb(147, 97, 62);
 }
 
-<<<<<<< HEAD
-.btn-primary:hover{
-    background-color: rgb(255, 255, 255);
-=======
 .btn-primary {
     background-color: transparent;
-    border: 2px rgb(245, 239, 239)
+    border: 2px solid rgb(245, 239, 239);
 }
+
 .btn-primary:hover{
-    background-color: rgb(243, 241, 238,1);
->>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
+    background-color: rgba(243, 241, 238, 1);
     transform: translateY(-2px);
 }
 
 .btn-secondary{
     background-color: transparent;
-    border: 2px rgb(245,239,239)
+    border: 2px solid rgb(245, 239, 239);
+
 }
 .btn-secondary:hover{
     background-color: rgb(243, 241, 238,1);
@@ -189,15 +186,9 @@ width: 100vw;
 /*LOGIN,SIGNUP---------------------------------------------------------------------------------------------------------------------------------------------------*/
 .split-layout{
     display:flex;
-<<<<<<< HEAD
     height: calc(100vh - 90px);
     margin-top: 90px;
     width: 100%;
-=======
-    height: 100vh;
-    padding-top: 90px;
-    
->>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 .panel-image{
@@ -261,13 +252,10 @@ width: 100vw;
     border: 1px solid rgba(255, 255, 255, 0.9);
 box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7);
     background-color: rgb(214, 195, 180);
-<<<<<<< HEAD
 }
 
 .signup-box{
     margin-top: 150px;
-=======
->>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 .login-title, .signup-title{
@@ -397,8 +385,6 @@ footer {
   letter-spacing: -0.05em;
   font-weight: 700;
   color: rgb(163, 108, 69,1);
-<<<<<<< HEAD
-=======
 }
 
 /* Reviews Section - Lumiskin Theme */
@@ -463,7 +449,6 @@ footer {
     font-size: 16px;
     color: dimgray;
     line-height: 1.6;
->>>>>>> adc7454baab857c38bc06fbef92ded66a6281adf
 }
 
 /* Reviews Section - Lumiskin Theme */
