@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Lumiskin Quiz</title>
+    </head>
+    <body>
+
+<body>
+
+    
+     <header>
+             <div class="container"> 
+                <nav>
+                   <ul class="navbuttons">
+                   <li><a href="index.html"><b>Home</b></a></li>
+                   <li><a href="#"><b>Products</b></a></li>
+                   <li><a href="#"><b>About</b></a></li>
+                  </ul>
+               </nav> 
+
+       <div class="nav-buttons">
+          <a href="login.html" class="btn-secondary"><b>Account</b></a>
+          <a href="cart.html" class="btn-primary"><b>Cart</b></a><br>    
+       </div>  
+     </div>
+</header>
+ 
+<div class="top-bar" id="topBar">
+  <div class="brand-label">Skin quiz</div>
+  <div class="seg-progress" id="segProgress"></div>
+</div>
+ 
+<div class="quiz-body">
+ 
+  <!-- STEP 1: Acne severity (image grid) -->
+  <div class="step active" data-step="1">
+    <h2 class="q-title">How would you describe your acne?</h2>
+    <p class="q-sub">Select the description that most closely matches your skin.</p>
+    <div class="img-grid">
+      <div class="img-card" data-value="mild" onclick="selectImg(this,'s1')">
+        <div class="img-placeholder p1">
+            <img src="images/Mild Acne.png" alt="Mild acne">
+        </div>
+        <div class="img-card-body"><strong>Mild</strong><span>Clogged pores or inflamed pimples on less than half your face</span></div>
+      </div>
+      <div class="img-card" data-value="moderate" onclick="selectImg(this,'s1')">
+        <div class="img-placeholder p2" >
+            <img src="images/Moderate Acne.png" alt="Moderate acne">
+        </div>
+        <div class="img-card-body"><strong>Moderate</strong><span>Clogged pores or inflamed pimples on more than half your face</span></div>
+      </div>
+      <div class="img-card" data-value="severe" onclick="selectImg(this,'s1')">
+        <div class="img-placeholder p3" >
+            <img src="images/Severe Acne.png" alt="Severe acne">
+        </div>
+        <div class="img-card-body"><strong>Severe</strong><span>Inflamed pimples all over or painful cystic acne</span></div>
+      </div>
+      <div class="img-card" data-value="none" onclick="selectImg(this,'s1')">
+        <div class="img-placeholder p4" >
+            <img src="images/No Acne.png" alt="No acne">
+        </div>
+        <div class="img-card-body"><strong>No acne</strong><span>Don't typically get pimples and want to prevent them</span></div>
+      </div>
+    </div>
+    <button class="btn-continue" id="next1" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back hidden">Back</button>
+  </div>
+ 
+  <!-- STEP 2: Breakout location (conditional — shown only if acne) -->
+  <div class="step" data-step="2">
+    <h2 class="q-title">Where are you breaking out?</h2>
+    <p class="q-sub">Select all that apply.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="face" onclick="selectMulti(this,2)">
+        <span class="opt-icon">🙂</span> Face <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="neck" onclick="selectMulti(this,2)">
+        <span class="opt-icon">🧣</span> Neck <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="body" onclick="selectMulti(this,2)">
+        <span class="opt-icon">🫷</span> Shoulders, chest, or back <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next2" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 3: Skin type -->
+  <div class="step" data-step="3">
+    <h2 class="q-title">What's your skin type?</h2>
+    <p class="q-sub">This helps your provider pick the right ingredients—at the right strengths—for your skin.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="very_dry" onclick="selectSingle(this,3)">
+        <span class="opt-icon"></span> Very dry <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="often_dry" onclick="selectSingle(this,3)">
+        <span class="opt-icon"></span> Often dry <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="combination" onclick="selectSingle(this,3)">
+        <span class="opt-icon"></span> Combination <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="often_oily" onclick="selectSingle(this,3)">
+        <span class="opt-icon"></span> Often oily <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="very_oily" onclick="selectSingle(this,3)">
+        <span class="opt-icon"></span> Very oily <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next3" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 4: Skin sensitivity -->
+  <div class="step" data-step="4">
+    <h2 class="q-title">How sensitive is your skin?</h2>
+    <p class="q-sub">Let us know if your skin is easily irritated when using new products.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="sensitive" onclick="selectSingle(this,4)">
+        <span class="opt-icon"></span> My skin is easily irritated <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="normal" onclick="selectSingle(this,4)">
+        <span class="opt-icon"></span> My skin is rarely irritated <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="avoids" onclick="selectSingle(this,4)">
+        <span class="opt-icon"></span> I don't typically try new products <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next4" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 5: Skin goals (multi-select image grid) -->
+  <div class="step" data-step="5">
+    <h2 class="q-title" id="goalsTitle">Got it! And what other goals can we help with?</h2>
+    <p class="q-sub">Choose as many as you'd like — our personalized formulas are made to multitask.</p>
+    <div class="goals-grid" id="goalsGrid">
+      <div class="goal-card" data-value="clogged_pores" onclick="selectGoal(this)">
+        <div class="goal-img g1">
+            <img src="images/Treat Clogged Pores.png" alt="Clogged pores">
+        </div>
+        <div class="goal-label">Treat clogged pores</div>
+      </div>
+      <div class="goal-card" data-value="dark_spots" onclick="selectGoal(this)">
+        <div class="goal-img g2">
+            <img src="images/Fade Dark Spots.png" alt="Dark spots">
+        </div>
+        <div class="goal-label">Fade dark spots</div>
+      </div>
+      <div class="goal-card" data-value="firmness" onclick="selectGoal(this)">
+        <div class="goal-img g3">
+            <img src="images/Boost Firmness.png" alt="Firmness">
+        </div>
+        <div class="goal-label">Boost firmness</div>
+      </div>
+      <div class="goal-card" data-value="texture" onclick="selectGoal(this)">
+        <div class="goal-img g4">
+            <img src="images/Improve Skin Texture.png" alt="Texture">
+        </div>
+        <div class="goal-label">Improve skin texture</div>
+      </div>
+      <div class="goal-card" data-value="glow" onclick="selectGoal(this)">
+        <div class="goal-img g5">
+            <img src="images/Restore Glowing Skin.png" alt="Glow">
+        </div>
+        <div class="goal-label">Restore glowing skin</div>
+      </div>
+      <div class="goal-card" data-value="rosacea" onclick="selectGoal(this)">
+        <div class="goal-img g6">
+            <img src="images/Treat Rosacea.png" alt="Rosacea">
+        </div>
+        <div class="goal-label">Treat rosacea</div>
+      </div>
+    </div>
+    <button class="btn-continue" id="next5" onclick="goNext()">Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 6: Products you use (multi-select) -->
+  <div class="step" data-step="6">
+    <h2 class="q-title">What products do you currently use?</h2>
+    <p class="q-sub">Understanding your routine helps us make personalized recommendations.</p>
+    <p class="q-hint">Select all that apply.</p>
+    <div class="options-list" style="margin-top:4px;">
+      <button class="opt-card" data-value="cleanser" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Cleanser <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="moisturizer" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Moisturizer <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="lip_balm" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Lip balm <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="sunscreen" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Sunscreen <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="makeup" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Makeup <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="retinol" onclick="selectMulti(this,6)">
+        <span class="opt-icon"></span> Retinol or retinoids <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="none" onclick="selectMultiNone(this,6)">
+        <span class="opt-icon"></span> None of the above <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next6" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 7: Health history intro -->
+  <div class="step" data-step="7">
+    <div class="intro-card">
+      <div class="intro-card-img">
+        👩‍⚕️
+        <div class="intro-badge">Dr. Sarah Kim, MD</div>
+      </div>
+    </div>
+    <h2 class="q-title">Let's go over your health history</h2>
+    <p class="q-sub">Your provider will need to know some basics about your health and medications. Your answers are private and always will be.</p>
+    <button class="btn-continue" onclick="goNext()" style="margin-top:28px;">Next</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 8: Gender -->
+  <div class="step" data-step="8">
+    <h2 class="q-title">What is your biological sex?</h2>
+    <p class="q-sub">This helps us understand hormonal influences on your skin.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="female" onclick="selectSingle(this,8)">
+        <span class="opt-icon"></span> Female <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="male" onclick="selectSingle(this,8)">
+        <span class="opt-icon"></span> Male <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next8" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 9: Pregnant / breastfeeding (shown only if female) -->
+  <div class="step" data-step="9">
+    <h2 class="q-title">Are you pregnant or breastfeeding?</h2>
+    <p class="q-sub">Some ingredients are not safe during pregnancy or breastfeeding. We'll adjust your formula accordingly.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="pregnant" onclick="selectSingle(this,9)">
+        <span class="opt-icon"></span> I'm pregnant <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="breastfeeding" onclick="selectSingle(this,9)">
+        <span class="opt-icon"></span> I'm breastfeeding <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="trying" onclick="selectSingle(this,9)">
+        <span class="opt-icon"></span> I'm trying to get pregnant <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="none" onclick="selectSingle(this,9)">
+        <span class="opt-icon"></span> None of the above <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <div class="warning-box" id="pregnancyWarning">
+      ⚠️ Some acne treatments (like oral isotretinoin, tretinoin, and certain antibiotics) are not safe during pregnancy or breastfeeding. We'll make sure to flag this for your provider.
+    </div>
+    <button class="btn-continue" id="next9" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 10: Hormonal acne (shown only if female and has acne) -->
+  <div class="step" data-step="10">
+    <h2 class="q-title">Do you notice your acne getting worse around your period?</h2>
+    <p class="q-sub">Hormonal fluctuations are a major driver of acne in women — knowing this helps us tailor your treatment.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="yes" onclick="selectSingle(this,10)">
+        <span class="opt-icon"></span> Yes, it's clearly worse before or during my period <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="sometimes" onclick="selectSingle(this,10)">
+        <span class="opt-icon"></span> Sometimes, but I'm not sure if it's related <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="no" onclick="selectSingle(this,10)">
+        <span class="opt-icon"></span> No, my acne doesn't seem hormonal <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next10" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 11: Allergies -->
+  <div class="step" data-step="11">
+    <h2 class="q-title">Do you have any allergies?</h2>
+    <p class="q-sub">We'd like to know about allergies to medications, product ingredients, etc.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="yes" onclick="selectSingle(this,11); setFlag('hasAllergy',true)">
+        <span class="opt-icon"></span> Yes, I have allergies <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="no" onclick="selectSingle(this,11); setFlag('hasAllergy',false)">
+        <span class="opt-icon"></span> No, I don't have allergies <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next11" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 12: Allergy details (conditional) -->
+  <div class="step" data-step="12">
+    <h2 class="q-title">What are you allergic to and what is your reaction?</h2>
+    <p class="q-sub">Be as specific as possible.</p>
+    <div class="q-note"> Heads up: Your personalized formula accounts for allergies to active ingredients. Please review the full ingredient lists before using any of our products.</div>
+    <textarea class="q-textarea" id="allergyText" placeholder="e.g. Benzoyl peroxide → redness and swelling; Tree nuts → hives" oninput="checkTextarea('allergyText','next12')"></textarea>
+    <button class="btn-continue" id="next12" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 13: Medical conditions -->
+  <div class="step" data-step="13">
+    <h2 class="q-title">Any medical conditions or recent surgeries?</h2>
+    <p class="q-sub">Medical conditions can impact your skin and the ingredients we pick for you.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="yes" onclick="selectSingle(this,13); setFlag('hasCondition',true)">
+        <span class="opt-icon"></span> Yes <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="no" onclick="selectSingle(this,13); setFlag('hasCondition',false)">
+        <span class="opt-icon"></span> No <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next13" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 14: Medical condition details (conditional) -->
+  <div class="step" data-step="14">
+    <h2 class="q-title">Please describe your medical conditions or surgeries.</h2>
+    <p class="q-sub">Your provider will review this information when creating your personalized formula.</p>
+    <textarea class="q-textarea" id="conditionText" placeholder="e.g. Type 2 diabetes, thyroid condition, recent skin surgery..." oninput="checkTextarea('conditionText','next14')"></textarea>
+    <button class="btn-continue" id="next14" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 15: Anything else -->
+  <div class="step" data-step="15">
+    <h2 class="q-title">Anything else you'd like to share with your provider?</h2>
+    <p class="q-sub">Specific ingredient requests, sensitivities, or lifestyle notes? We're all ears.</p>
+    <div class="options-list">
+      <button class="opt-card" data-value="add" onclick="selectSingle(this,15); setFlag('hasExtra',true)">
+        <span class="opt-icon"></span> I'd like to add something else <span class="check-icon">✓</span>
+      </button>
+      <button class="opt-card" data-value="done" onclick="selectSingle(this,15); setFlag('hasExtra',false)">
+        <span class="opt-icon"></span> I'm all set <span class="check-icon">✓</span>
+      </button>
+    </div>
+    <button class="btn-continue" id="next15" onclick="goNext()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- STEP 16: Extra notes (conditional) -->
+  <div class="step" data-step="16">
+    <h2 class="q-title">Tell us anything else!</h2>
+    <p class="q-sub">Specific ingredient requests, lifestyle notes, or anything you want your provider to know.</p>
+    <textarea class="q-textarea" id="extraText" placeholder="Type your answer here!" oninput="checkTextarea('extraText','next16')"></textarea>
+    <button class="btn-continue" id="next16" onclick="showResult()" disabled>Continue</button>
+    <button class="btn-back" onclick="goBack()">Back</button>
+  </div>
+ 
+  <!-- Result -->
+  <div class="step" data-step="result">
+    <div class="result-check">✓</div>
+    <h2 class="result-title" id="resultTitle">Your skin profile</h2>
+    <p class="result-desc" id="resultDesc"></p>
+    <div class="result-tags" id="resultTags"></div>
+    <p class="result-section-label">Recommended routine</p>
+    <div id="routineList"></div>
+    <button class="btn-restart" onclick="restartQuiz()">↩ Retake the quiz</button>
+  </div>
+ 
+</div>
+
+         <script src="js.js"></script>
+    </body>
+</html>
