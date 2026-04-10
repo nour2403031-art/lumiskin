@@ -1,5 +1,4 @@
-
- window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function() {
     const hero = document.querySelector('.hero-container');
     const scrollPos = window.scrollY;
     const maxScroll = window.innerHeight;
@@ -392,4 +391,38 @@ const answers = {};
   // Step 5 and 7 continue buttons are always enabled (goals optional, intro no selection needed)
   document.getElementById('next5').disabled = false;
  
-  updateProgress();
+  updateProgress(); 
+
+ /* ══ CART LOGIC ══ */
+   let cart = [];
+let total = 0;
+
+function addToCart(productName, price) {
+    cart.push({ name: productName, price: price });
+    total += price;
+    displayCart();
+}
+
+function displayCart() {
+    const cartItems = document.getElementById('cartItems');
+    const totalAmount = document.getElementById('totalAmount');
+    
+    // Clear the current cart display
+    cartItems.innerHTML = '';
+    
+    // Display each item in the cart
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+    });
+
+    // Update total amount
+    totalAmount.textContent = total.toFixed(2);
+}
+
+      
+  
+ 
+ 
+  
