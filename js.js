@@ -9,7 +9,7 @@ window.addEventListener('scroll', function() {
     
     hero.style.backgroundSize = newSize + '%';
     
-    hero.style.transition = 'none';ero.style.backgroundSize = newSize + '%';
+    hero.style.transition = 'none';hero.style.backgroundSize = newSize + '%';
     
     hero.style.transition = 'background-size 0.1s ease-out';
  });
@@ -420,7 +420,45 @@ function displayCart() {
     // Update total amount
     totalAmount.textContent = total.toFixed(2);
 }
+/* ══ PROFESSIONAL BRAND SHOWCASE ANIMATION ══ */
+window.addEventListener('scroll', () => {
+    // This targets the brand section and the cards inside it
+    const brandSection = document.querySelector('.brand-showcase');
+    const brandCards = document.querySelectorAll('.brand-card');
+    
+    if(!brandSection) return;
 
+    // Defines the point where the animation starts (80% down the screen)
+    const triggerBottom = window.innerHeight / 5 * 4;
+    const sectionTop = brandSection.getBoundingClientRect().top;
+
+    // If the section is visible, reveal cards one by one (Staggered Effect)
+    if(sectionTop < triggerBottom) {
+        brandCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+            }, index * 150); // Each card waits 150ms after the previous one
+        });
+    }
+});
+
+/* ══ SMOOTH SCROLL FOR NAVIGATION LINKS ══ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
       
   
  
