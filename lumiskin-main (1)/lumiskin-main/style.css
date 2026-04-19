@@ -1,0 +1,1061 @@
+*{
+    margin: 0;
+    padding: 0;
+        box-sizing: border-box;
+}
+header, main, footer{ 
+     display: flex;
+    flex-direction: column;
+   
+}
+/*first page---------------------------------------------------------------------------------------------------------------------------------------------------*/
+header{
+    width: 100%;
+    padding: 0px 0px;
+    position: absolute;
+}
+
+body{
+    background-color: rgb(233, 221, 206, 1);
+    line-height: 1.6;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logotext{
+    color: rgb(147, 97, 62);;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin:0;
+    padding:0;
+}
+
+nav a{
+    text-decoration: none;
+    color: rgb(147, 97, 62);
+    font-size: 22px;
+    position: relative;
+    padding: 5px 0;
+     transition: all 0.3s ease;
+}
+
+
+ nav a::after {
+    content: '';
+    height: 2px;
+    background-color: rgb(243, 241, 238,1);
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 0;
+     transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.nav-buttons{
+    display: flex;
+    gap: 10px;
+}    
+
+.btn-primary, .btn-secondary{
+    display: block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    font-size: 22px;
+    text-decoration: none;
+    color: rgb(147, 97, 62);
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 2px solid rgb(245, 239, 239);
+}
+
+.btn-primary:hover{
+    background-color: rgba(243, 241, 238, 1);
+    transform: translateY(-2px);
+}
+
+.btn-secondary{
+    background-color: transparent;
+    border: 2px solid rgb(245, 239, 239);
+
+}
+.btn-secondary:hover{
+    background-color: rgb(243, 241, 238,1);
+    transform: translateY(-2px);
+}
+
+.btn-formula {
+    display: block;
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, rgb(236, 225, 225), rgb(214, 195, 180));
+    color: rgb(147, 97, 62);
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(163, 108, 69, 0.3);
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+}
+
+.btn-formula:hover {
+    background: linear-gradient(135deg, rgb(214, 195, 180), rgb(163, 108, 69));
+    color: rgb(243, 241, 238);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(163, 108, 69, 0.4);
+}
+
+.btn-formula::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-formula:hover::before {
+    left: 100%;
+}
+
+.hero{
+height: 100vh;
+width: 100vw;
+}
+
+.hero-container{
+   background-image: url('images/skin1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    width: 100%; 
+    height: 100%; 
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.2s ease-out;
+    transform-origin: center center;
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    color: rgb(243, 241, 238,1);
+    text-align:left;
+    padding: 20px;
+}
+.hero-title span {
+    color: rgba(243,241, 238, 1); 
+}
+
+/*LOGIN,SIGNUP---------------------------------------------------------------------------------------------------------------------------------------------------*/
+.split-layout{
+    display:flex;
+    height: calc(100vh - 90px);
+    margin-top: 90px;
+    width: 100%;
+}
+
+.panel-image{
+    width:50%;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.panel-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+    object-position: center top;
+}
+
+.panel-image:hover img{
+    transform: scale(1.1);
+}
+
+.panel-image .tagline{
+    position: absolute;
+    top: 70%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: rgb(243, 241, 238, 1);
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(206, 175, 145, 1);
+    animation: fadeUp 0.9s 0.3s both;
+    text-align: left;
+}
+.panel-image, .tagline strong{
+    font-weight: 700;
+}
+
+.panel-form{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 30px;
+    overflow-y: auto;
+}
+.panel-form-signup{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 30px;
+    overflow-y: auto;
+}
+
+.login-box, .signup-box{
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7);
+    background-color: rgb(214, 195, 180);
+}
+
+.signup-box{
+    margin-top: 150px;
+}
+
+.login-title, .signup-title{
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: rgb(163, 108, 69, 1);
+    text-align: center;
+}
+
+.login-form, .signup-form{
+    display: flex;
+    flex-direction: column;
+    font-weight:600 ;
+}
+
+.login-form label, .signup-form label{
+   font-size: 20px;
+   font-weight: 600;
+}
+
+.login-form input, .signup-form input{
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+    border-color: rgba(245, 239, 239 ,1);
+    box-shadow: 0 0 0 3px rgba(245, 239, 239, 1);
+}
+
+.form-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-links a {
+    font-size: 14px;
+    color: rgba(163, 108, 69, 1);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.form-links a:hover {
+    color: rgb(206, 175, 145,1);
+}
+/*lastpage---------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+footer {
+  background-color: rgb(233, 221, 206,1);
+  color: #fff;
+  padding: 80px 40px 20px 40px;
+   margin: 0; 
+   font-family: 'Inter', sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+  color: rgba(245, 239, 59, 239,1);
+}
+
+/* Newsletter Styles */
+.footer-newsletter h2 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: rgb(163, 108, 69,1);
+}
+
+.input-group {
+  display: flex;
+  border-bottom: 1px solid rgb(243, 241, 238, 1);
+  padding: 10px 0;
+  width: 300px;
+}
+
+.input-group input {
+  background: transparent;
+  border: none;
+  color: black;
+  width: 100%;
+  outline: none;
+}
+
+.input-group button {
+  background: rgb(243, 241, 238,1);
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Nav Columns */
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.nav-col h4 {
+  color: rgb(206, 175, 145,1);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.nav-col ul { list-style:none; padding: 0; }
+.nav-col li { margin-bottom: 8px;  }
+.nav-col a { color: rgb(245, 239, 239,1); text-decoration: none; font-size: 0.9rem; }
+
+.footer-brand h1 {
+  font-size: 18vw; 
+  text-align: center;
+  margin: 0;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: rgb(163, 108, 69,1);
+}
+
+/* Reviews Section - Lumiskin Theme */
+.reviews-page {
+    padding-top: 100px; /* Space for your absolute header */
+}
+
+.reviews .heading {
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.reviews .heading span {
+    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+}
+
+.reviews .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
+}
+
+.reviews .box {
+    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.reviews .box:hover {
+    transform: translateY(-5px);
+    border-color: dimgray; /* Matches your btn-primary border */
+    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+}
+
+.reviews .box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.reviews .box h3 {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0 5px;
+}
+
+.reviews .box .stars i {
+    font-size: 18px;
+    color: rgb(136, 82, 82); /* Reddish-brown stars */
+    margin-bottom: 10px;
+}
+
+.reviews .box p {
+    font-size: 16px;
+    color: dimgray;
+    line-height: 1.6;
+}
+
+/* Reviews Section - Lumiskin Theme */
+.reviews-page {
+    padding-top: 100px; /* Space for your absolute header */
+}
+
+.reviews .heading {
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.reviews .heading span {
+    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+}
+
+.reviews .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
+}
+
+.reviews .box {
+    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.reviews .box:hover {
+    transform: translateY(-5px);
+    border-color: dimgray; /* Matches your btn-primary border */
+    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+}
+
+.reviews .box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.reviews .box h3 {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    padding: 15px 0 5px;
+}
+
+.reviews .box .stars i {
+    font-size: 18px;
+    color: rgb(136, 82, 82); /* Reddish-brown stars */
+    margin-bottom: 10px;
+}
+
+.reviews .box p {
+    font-size: 16px;
+    color: dimgray;
+    line-height: 1.6;
+}
+
+/*quiz*/
+ *, *::before, *::after {
+     box-sizing: border-box; 
+     margin: 0; 
+     padding: 0; 
+    }
+ 
+  :root {
+    --bg: #E8E3D9;
+    --white: #FFFFFF;
+    --navy: #1F1C4E;
+    --navy-light: #2D2A6A;
+    --purple: #6B5FD6;
+    --purple-hover: #5A4FC0;
+    --muted: #7A7690;
+    --disabled-bg: #D6D1C8;
+    --disabled-text: #9E9A91;
+    --selected-border: #6B5FD6;
+    --selected-bg: #F0EEFB;
+    --check-color: #E07050;
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+ 
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  .top-bar {
+    width: 100%;
+    max-width: 680px;
+    padding: 22px 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-label { font-size: 14px; font-weight: 700; color: var(--navy); }
+ 
+  .seg-progress { display: flex; gap: 7px; align-items: center; }
+  .seg { height: 5px; border-radius: 99px; background: #C4BFAF; transition: background 0.3s; }
+  .seg.filled  { background: var(--purple); }
+  .seg.partial { background: var(--purple); opacity: 0.5; }
+ 
+  .quiz-body { width: 100%; max-width: 680px; padding: 32px 24px 48px; }
+ 
+  .step { display: none; }
+  .step.active { display: block; animation: fadeUp 0.32s ease both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+ 
+  .q-title { font-size: 25px; font-weight: 800; color: var(--navy); line-height: 1.25; margin-bottom: 10px; }
+  .q-sub { font-size: 14px; color: var(--navy-light); line-height: 1.65; margin-bottom: 6px; }
+  .q-note { font-size: 13px; color: var(--navy-light); line-height: 1.65; margin-bottom: 20px; background: #F5F3EC; border-radius: 8px; padding: 12px 14px; }
+  .q-hint { font-size: 13px; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
+ 
+  /* Option cards */
+  .options-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; margin-bottom: 28px; }
+  .opt-card {
+    background: var(--white);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+  }
+  .opt-card:hover { border-color: #A89FE8; }
+  .opt-card.selected { border-color: var(--selected-border); background: var(--selected-bg); }
+  .opt-card .check-icon {
+    margin-left: auto;
+    color: var(--check-color);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .opt-card.selected .check-icon { opacity: 1; }
+  .opt-icon { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0; }
+ 
+  /* Image grid */
+  .img-grid {
+     display: grid; 
+     grid-template-columns: 1fr 1fr; 
+     gap: 12px; 
+     margin-top: 8px; 
+     margin-bottom: 28px;
+    
+    }
+  .img-card {
+    background: var(--white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .img-card:hover { border-color: #A89FE8; }
+  .img-card.selected { border-color: var(--selected-border); }
+  .img-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 22px; height: 22px;
+    background: var(--purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 22px;
+    text-align: center;
+  }
+  .img-placeholder {
+     width: 100%; 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 36px; }
+  .img-placeholder.p1 { background: #F5D0C0; }
+  .img-placeholder.p2 { background: #F2BFBB; }
+  .img-placeholder.p3 { background: #E8A8A5; }
+  .img-placeholder.p4 { background: #E8D8C8; }
+  .img-placeholder.p5 { background: #D0E8F0; }
+  .img-placeholder.p6 { background: #D8E8D0; }
+  .img-card-body { padding: 12px 14px 16px; }
+  .img-card-body strong { font-size: 14px; font-weight: 800; color: var(--navy); display: block; margin-bottom: 4px; }
+  .img-card-body span { font-size: 12px; color: var(--navy-light); line-height: 1.5; }
+ 
+  /* Skin goals grid (photo style from screenshot) */
+  .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; margin-bottom: 28px; }
+  .goal-card {
+    background: var(--white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .goal-card:hover { border-color: #A89FE8; }
+  .goal-card.selected { border-color: var(--selected-border); }
+  .goal-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 22px; height: 22px;
+    background: var(--purple);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px; font-weight: 800;
+    line-height: 22px; text-align: center;
+  }
+  .goal-img { width: 100%; flex: 1; background: #D8D0C8; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+  .goal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .goal-img.g1 { background: linear-gradient(135deg, #F0D8C0, #E8C8B0); }
+  .goal-img.g2 { background: linear-gradient(135deg, #D8C8B8, #C8B8A8); }
+  .goal-img.g3 { background: linear-gradient(135deg, #E0D0C0, #D0C0B0); }
+  .goal-img.g4 { background: linear-gradient(135deg, #D8D0C8, #C8C0B8); }
+  .goal-img.g5 { background: linear-gradient(135deg, #C8D8D0, #B8C8C0); }
+  .goal-img.g6 { background: linear-gradient(135deg, #F0C8C0, #E0B8B0); }
+  .goal-label { padding: 10px 12px 12px; font-size: 13px; font-weight: 700; color: var(--navy); }
+ 
+  /* Textarea */
+  .q-textarea {
+    width: 100%;
+    min-height: 130px;
+    border: 2px solid var(--purple);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    resize: vertical;
+    outline: none;
+    background: var(--white);
+    margin-bottom: 28px;
+  }
+  .q-textarea::placeholder { color: var(--muted); font-weight: 400; }
+  .q-textarea:focus { border-color: var(--navy-light); }
+ 
+  /* Intro card */
+  .intro-card { background: var(--white); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
+  .intro-card-img {
+    width: 100%; height: 230px;
+    background: linear-gradient(160deg, #C8D8E8 0%, #A8B8CC 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; position: relative;
+  }
+  .intro-badge {
+    position: absolute; bottom: 12px; left: 12px;
+    background: #F0622A; color: white;
+    font-size: 12px; font-weight: 700;
+    padding: 5px 10px; border-radius: 6px;
+  }
+ 
+  /* Buttons */
+  .btn-continue {
+    width: 100%; padding: 17px;
+    background: var(--purple); color: white;
+    border: none; border-radius: 99px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: background 0.2s;
+    margin-bottom: 16px; display: block;
+  }
+  .btn-continue:hover:not(:disabled) { background: var(--purple-hover); }
+  .btn-continue:disabled { background: var(--disabled-bg); color: var(--disabled-text); cursor: default; }
+  .btn-back {
+    display: block; width: 100%; text-align: center;
+    background: none; border: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--navy); cursor: pointer; padding: 6px;
+  }
+  .btn-back:hover { opacity: 0.6; }
+  .btn-back.hidden { visibility: hidden; }
+ 
+  /* Result */
+  .result-check {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: #E2F0E6; color: #3A8E50;
+    font-size: 24px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-weight: 800;
+  }
+  .result-title { font-size: 28px; font-weight: 800; color: var(--navy); text-align: center; margin-bottom: 10px; }
+  .result-desc { font-size: 14px; color: var(--navy-light); text-align: center; line-height: 1.7; margin-bottom: 28px; }
+  .result-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .result-item {
+    background: var(--white); border-radius: var(--radius-sm);
+    padding: 16px 18px; margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .result-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--selected-bg); color: var(--purple);
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .result-item-text strong { font-size: 14px; font-weight: 700; color: var(--navy); display: block; margin-bottom: 3px; }
+  .result-item-text span { font-size: 12px; color: var(--muted); }
+  .result-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .result-tag {
+    background: var(--selected-bg); color: var(--purple);
+    border-radius: 99px; font-size: 12px; font-weight: 700;
+    padding: 4px 12px;
+  }
+  .btn-restart {
+    width: 100%; padding: 17px; background: transparent;
+    color: var(--purple); border: 2px solid var(--purple);
+    border-radius: 99px; font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .btn-restart:hover { background: var(--selected-bg); }
+ 
+  /* Warning box */
+  .warning-box {
+    background: #FFF5F0; border: 1.5px solid #F0A090;
+    border-radius: var(--radius-sm); padding: 14px 16px;
+    font-size: 13px; color: #8B3020; line-height: 1.6;
+    margin-bottom: 20px; display: none;
+  }
+  .warning-box.visible { display: block; }
+
+  .img-placeholder{
+    width: 100%;
+    height: 100%;
+  }
+
+  .img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  } 
+  /*cart*/ 
+body {
+    font-family: Arial, sans-serif;
+}
+
+.product, .cart {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* --- AUTOMATIC SMOOTH SCROLL --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- BRAND SECTION STYLING --- */
+.brand-showcase {
+    padding: 80px 5%;
+    text-align: left;
+    /* Matches the beige background used in your body */
+    background-color: rgb(233, 221, 206); 
+}
+
+.brand-title {
+    font-size: 42px;
+    /* Matches your Lumiskin logo text color */
+    color: rgb(147, 97, 62); 
+    margin-bottom: 50px;
+    font-weight: 800;
+}
+
+.brand-container {
+    display: flex;
+    justify-content: flex-start; /* CHANGED TO FLEX-START (Left) */
+    gap: 40px; /* Optional: Slightly increased gap */
+    padding-top: 20px;
+}
+
+.brand-card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* The Circle Wrapper */
+.brand-circle {
+    width: 220px;
+    height: 220px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* This is vital for the zoom effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* The Logo Image */
+.brand-circle img {
+    width: 75%;
+    height: auto;
+    transition: transform 0.5s ease; /* Controls the zoom speed */
+}
+
+.brand-name {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(147, 97, 62);
+}
+
+/* --- THE HOVER ANIMATIONS --- */
+
+/* 1. Zoom the logo inside the circle */
+.brand-card:hover .brand-circle img {
+    transform: scale(1.3); 
+}
+
+/* 2. Style the circle on hover */
+.brand-card:hover .brand-circle {
+    box-shadow: 0 15px 40px rgba(163, 108, 69, 0.2);
+    border-color: rgb(233, 221, 206); /* Matches your website background exactly */
+    transform: translateY(-5px); /* Gentle lift */
+}
+
+/* 3. Change text color on hover */
+.brand-card:hover .brand-name {
+    color: rgb(147, 97, 62) !important ; /* Matches your logo exactly when hovered */
+}
+
+/* --- PRODUCT GRID LAYOUT --- */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* --- THE CARD CONTAINER --- */
+.product-item {
+    width: 320px;
+    background-color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border: 1px solid #f0f0f0;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* --- THE IMAGE AREA (Hover Logic) --- */
+.image-wrap {
+    position: relative; /* Essential for absolute positioning of button/tags */
+    height: 380px;
+    overflow: hidden;   /* Keeps the button hidden until it slides up */
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrap img {
+    position: absolute;
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.img-secondary {
+    opacity: 0; /* Hidden by default */
+}
+
+/* HOVER: Hide front, show back image */
+.product-item:hover .img-primary {
+    opacity: 0;
+}
+
+.product-item:hover .img-secondary {
+    opacity: 1;
+}
+/* --- THE SLIDING BUTTON (Smaller Width) --- */
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 15px;      /* Added a little gap from the bottom edge */
+    left: 5%;          /* This centers the 90% width button */
+    width: 90%;        /* Now slightly smaller than the whole card */
+    height: 50px;      /* Slightly slimmer height for a cleaner look */
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    z-index: 5;
+    
+    /* The Slide Gradient */
+    background: linear-gradient(to right, white 50%, black 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    
+    color: #ffffff;
+    
+    /* Animation settings */
+    transform: translateY(150%); /* Move further down so it stays hidden */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother slide */
+}
+
+/* 1. Slide the button UP when you hover the card */
+.product-item:hover .add-to-cart-btn {
+    transform: translateY(0);
+}
+
+/* 2. Slide the color from LEFT to RIGHT when you hover the button */
+.add-to-cart-btn:hover {
+    background-position: left bottom;
+    color: #000000;
+    outline: 1px solid #000000; /* Use outline so it doesn't jump the size */
+}
+
+
+/* --- PRODUCT DETAILS (Typography) --- */
+.product-details {
+    padding: 20px;
+    background-color: #fcfcfc;
+}
+
+.brand-label {
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+    height: 45px; /* Keeps titles aligned if one is longer */
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ce6e1a; /* Magenta color for price */
+}
+
+/* --- MAGENTA PROMO TAGS --- */
+.tag-promo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ce681abf;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 3px;
+    z-index: 10;
+}
