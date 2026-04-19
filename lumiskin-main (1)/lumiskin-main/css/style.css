@@ -439,3 +439,97 @@ footer {
 .brand-card:hover .brand-name {
     color: rgb(206, 110, 26);
 }
+
+/* -- Myth Teaser Section -- */
+.myth-teaser {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, #fdf8f4 0%, #e9ddce 100%);
+    text-align: center;
+    border-top: 1px solid rgba(147, 97, 62, 0.1);
+}
+
+.teaser-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #c0392b;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.myth-teaser h2 {
+    font-size: 48px;
+    color: rgb(147, 97, 62);
+    margin-bottom: 15px;
+}
+
+.myth-teaser h2 em {
+    font-style: italic;
+    color: #885252;
+}
+
+.myth-teaser p {
+    color: #777;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.teaser-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.mini-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 140px;
+    box-shadow: 0 10px 25px rgba(163, 108, 69, 0.1);
+    transform: rotate(-3deg);
+    transition: 0.3s;
+}
+
+.mini-card:nth-child(2) {
+    transform: rotate(3deg);
+}
+
+.mini-card:hover {
+    transform: translateY(-10px) rotate(0deg);
+}
+
+.mini-card .icon {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.mini-card p {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0;
+    color: rgb(147, 97, 62);
+}
+
+.btn-myths-link {
+    display: inline-block;
+    padding: 18px 40px;
+    background: rgb(147, 97, 62);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(147, 97, 62, 0.3);
+}
+
+.btn-myths-link:hover {
+    background: #885252;
+    transform: scale(1.05);
+}
