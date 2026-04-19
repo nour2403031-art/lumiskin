@@ -1,141 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumiskin website</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="js.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumiskin — Discover Radiant Skin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ── Obsessed bar ── */
+    .obsessed-bar {
+      background: var(--brown-dark);
+      color: var(--beige-light);
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      position: relative;
+      z-index: 200;
+      transition: background 0.2s;
+    }
+    .obsessed-bar:hover { background: var(--brown); }
+    .obsessed-bar em { font-style: italic; margin-right: 4px; }
+ 
+    /* ── Reviews modal height fix so list always shows ── */
+    .reviews-modal { max-height: 90vh !important; }
+    .reviews-modal-list { flex: 1; min-height: 0; }
+ 
+    /* ── Leave a review — collapsed toggle ── */
+    .leave-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 36px;
+      background: var(--beige-light);
+      border: none;
+      border-top: 1.5px solid var(--beige-mid);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brown-dark);
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .leave-toggle-btn:hover { background: var(--beige-mid); }
+    .leave-toggle-btn .chevron { transition: transform 0.3s; display: inline-block; }
+    .leave-toggle-btn.open .chevron { transform: rotate(180deg); }
+ 
+    .reviews-modal-leave {
+      border-top: none;
+      padding: 0 36px;
+      flex-shrink: 0;
+      background: var(--beige-light);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .reviews-modal-leave.open {
+      max-height: 420px;
+      padding: 22px 36px 30px;
+    }
+ 
+    .leave-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 14px;
+    }
+    .leave-title em { font-style: italic; color: rgb(136,82,82); }
+ 
+    .leave-form { display: flex; flex-direction: column; gap: 11px; }
+    .leave-form input,
+    .leave-form textarea {
+      padding: 11px 14px;
+      border: 1.5px solid var(--beige-mid);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fff;
+      color: #333;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .leave-form input:focus,
+    .leave-form textarea:focus {
+      border-color: var(--brown-light);
+      box-shadow: 0 0 0 3px rgba(206,175,145,0.3);
+    }
+    .leave-form textarea { min-height: 80px; resize: vertical; }
+ 
+    .leave-star-row { display: flex; gap: 2px; align-items: center; }
+    .leave-star-row label {
+      font-size: 13px; font-weight: 700;
+      color: var(--brown-dark); margin-right: 8px;
+    }
+    .star-btn {
+      background: none; border: none;
+      font-size: 26px; color: #ccc;
+      cursor: pointer; transition: color 0.15s, transform 0.15s;
+      padding: 0; line-height: 1;
+    }
+    .star-btn:hover { transform: scale(1.2); }
+    .star-btn.lit { color: var(--brown-dark); }
+ 
+    .btn-leave-submit {
+      background: var(--brown-dark); color: #fff;
+      border: none; border-radius: 99px;
+      padding: 11px 26px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; align-self: flex-start;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-leave-submit:hover { background: var(--brown); transform: translateY(-2px); }
+ 
+    .leave-success {
+      display: none;
+      background: #e8f5e9; border: 1.5px solid #a5d6a7;
+      border-radius: 10px; padding: 12px 16px;
+      color: #2e7d32; font-size: 14px; font-weight: 600;
+    }
+ 
+    /* ── Myth vs Fact banner ── */
+    .myths-banner {
+      padding: 50px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      background: linear-gradient(120deg, var(--beige-mid) 0%, var(--beige) 100%);
+      flex-wrap: wrap;
+    }
+    .myths-banner-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 700;
+      color: var(--brown); line-height: 1.1; margin-bottom: 10px;
+    }
+    .myths-banner-text h2 em { font-style: italic; color: rgb(136,82,82); }
+    .myths-banner-text p { font-size: 15px; color: #777; max-width: 380px; line-height: 1.65; }
+ 
+    .btn-myths {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      background: var(--brown-dark); color: var(--beige-light);
+      border-radius: 99px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(163,108,69,0.3);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-myths:hover {
+      background: var(--brown);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(163,108,69,0.4);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container"> 
-            <nav>
-                <ul class="navbuttons">
-                    <li><a href="index.html"><b>Home</b></a></li>
-                    <li><a href="#brand-section"><b>Products</b></a></li>
-                    <li><a href="#"><b>About</b></a></li>
-                </ul>
-            </nav>
-            <a href="index.html" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>  
-
-            <div class="nav-buttons">
-                <a href="login.html" class="btn-secondary"><b>Account</b></a>
-                <a href="cart.html" class="btn-secondary"><b>Cart</b></a><br>    
-            </div>  
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title"><b>Discover the Secret to<span> Radiant Skin</span></b></h1>
-                <a href="quiz.html" class="btn-formula"><b>Regain your formula</b></a>
-            </div>      
-        </div>
-    </section> 
-
-    <section class="reviews">
-        <h1 class="heading">Real <span>Results</span></h1>
-        <div class="box-container">
-            <div class="box">
-                <img src="images/skin1.jpg" alt="Nour">
-                <h3>Nour</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Lumiskin completely cleared my redness. I've never felt more confident!"</p>
-            </div>
-            <div class="box">
-                <img src="images/skin2.jpg" alt="Jana">
-                <h3>Jana</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The glow is real! My dark circles have faded so much since I started."</p>
-            </div>
-            <div class="box">
-                <img src="images/skin3.jpg" alt="Lina">
-                <h3>Lina</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Targeting my hyperpigmentation was a struggle until I found Lumiskin."</p>
-            </div>
-            <div class="box">
-                <img src="images/skin4.jpg" alt="Hadeel">
-                <h3>Hadeel</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Acne-free for the first time in 5 years. This feels like a dream."</p>
-            </div>
-            <div class="box">
-                <img src="images/skin5.jpg" alt="Nouran">
-                <h3>Nouran</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The best skincare investment. The results speak for themselves."</p>
-            </div>
-            <div class="box">
-                <img src="images/skin6.jpg" alt="Dina">
-                <h3>Dina</h3>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Lumiskin is now a permanent part of my life. My skin texture is 100% better."</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="brand-section" class="brand-showcase">
-        <h2 class="brand-title">Shop by Brand</h2>
-        <div class="brand-container">
-            <a href="laroche-products.html" class="brand-card">
-    <div class="brand-circle">
-        <img src="images/La-Roche-Posay-logo-brand-page.jpg" alt="La Roche-Posay Logo">
+ 
+  <!-- Obsessed bar -->
+  <div class="obsessed-bar" onclick="openReviewsModal()">
+    <em>See why everyone's obsessed</em> with Lumiskin ✨ →
+  </div>
+ 
+  <header>
+    <div class="container">
+      <nav>
+        <ul class="navbuttons">
+          <li><a href="index.html"><b>Home</b></a></li>
+          <li><a href="#brand-section"><b>Products</b></a></li>
+          <li><a href="#"><b>About</b></a></li>
+        </ul>
+      </nav>
+      <a href="index.html" class="logo">
+        <div class="logotext"><i>Lumiskin</i></div>
+      </a>
+      <div class="nav-buttons">
+        <a href="login.html" class="btn-secondary"><b>Account</b></a>
+        <a href="cart.html" class="btn-primary"><b>Cart</b></a>
+      </div>
     </div>
-    <p class="brand-name">La Roche-Posay</p>
-</a>
-            
+  </header>
+ 
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title"><b>Discover the Secret to<span><i> Radiant Skin</i></span></b></h1>
+        <a href="quiz.html" class="btn-formula"><b>Regain your formula</b></a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Floating review snippet -->
+  <div class="review-snippet" id="reviewSnippet" onclick="openReviewsModal()">
+    <div class="review-snippet-stars">
+      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </div>
+    <p class="review-snippet-text">"Lumiskin completely cleared my redness. I've never felt more confident!"</p>
+    <div class="review-snippet-author">
+      <span class="review-snippet-name">Nour</span>
+      <span class="review-snippet-verified">✓ Verified</span>
+    </div>
+    <span class="review-snippet-cta">See all reviews →</span>
+  </div>
+ 
+  <!-- Full reviews modal -->
+  <div class="reviews-modal-overlay" id="reviewsModal" onclick="closeReviewsModalOutside(event)">
+    <div class="reviews-modal">
+      <button class="reviews-modal-close" onclick="closeReviewsModal()">×</button>
+ 
+      <div class="reviews-modal-header">
+        <h2>Real <span>Results</span></h2>
+        <div class="reviews-modal-summary">
+          <div class="reviews-modal-score">
+            <span class="score-number">4.8</span>
+            <div class="score-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
             </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="footer-newsletter">
-                <h2>Your Best Skin<br>Starts Here</h2>
-                <p>Join our community and receive expert insights.</p>
-                <div class="input-group">
-                    <input type="email" placeholder="Enter an email address">
-                    <button type="submit">↗️</button>
-                </div>
-            </div>
-
-            <div class="footer-nav">
-                <div class="nav-col">
-                    <h4>Discover</h4>
-                    <ul>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="nav-col">
-                    <h4>Contact</h4>
-                    <p><strong>LumiSkin Branches</strong><br>cairo, Egypt</p>
-                    <p><strong>LumiSkin Branches</strong><br>alexandria, Egypt</p>
-                </div>
-                <div class="nav-col">
-                    <h4>Social Media</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ul>
-                </div>
-                <div class="nav-col">
-                    <h4>Help & Support</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
+            <span class="score-label">Based on 6 reviews</span>
+          </div>
         </div>
-
-        <div class="footer-brand">
-            <h1>LumiSkin</h1>
+      </div>
+ 
+      <!-- All reviews — scroll freely -->
+      <div class="reviews-modal-list">
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">N</div>
+            <div><span class="review-name">Nour</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <p class="review-title">Life-changing results</p>
+          <p class="review-body">"Lumiskin completely cleared my redness. I've never felt more confident in my own skin — this is genuinely the best skincare I've ever tried."</p>
         </div>
-    </footer> 
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">J</div>
+            <div><span class="review-name">Jana</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <p class="review-title">The glow is real</p>
+          <p class="review-body">"The glow is real! My dark circles have faded so much since I started. My friends keep asking what I'm doing differently — it's Lumiskin."</p>
+        </div>
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">L</div>
+            <div><span class="review-name">Lina</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <p class="review-title">Finally beat hyperpigmentation</p>
+          <p class="review-body">"Targeting my hyperpigmentation was a struggle for years until I found Lumiskin. Within 3 weeks I could already see a visible difference in my dark spots."</p>
+        </div>
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">H</div>
+            <div><span class="review-name">Hadeel</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <p class="review-title">Acne-free for the first time</p>
+          <p class="review-body">"Acne-free for the first time in 5 years. This feels like a dream. The personalized quiz made all the difference — my routine is finally built for my skin."</p>
+        </div>
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">N</div>
+            <div><span class="review-name">Nouran</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <p class="review-title">Best skincare investment</p>
+          <p class="review-body">"The best skincare investment I've ever made. The results speak for themselves — smoother, clearer, healthier-looking skin in just one month."</p>
+        </div>
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="review-avatar">D</div>
+            <div><span class="review-name">Dina</span><span class="review-verified">✓ Verified</span></div>
+            <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          </div>
+          <p class="review-title">100% better texture</p>
+          <p class="review-body">"Lumiskin is now a permanent part of my life. My skin texture is 100% better and my pores look visibly smaller. I recommend it to everyone who asks about my skin."</p>
+        </div>
+        <!-- User-submitted reviews appear here -->
+        <div id="userReviewsList"></div>
+      </div>
+ 
+      <!-- Leave a review — collapsed by default -->
+      <button class="leave-toggle-btn" id="leaveToggleBtn" onclick="toggleLeaveForm()">
+        <i class="fas fa-pen"></i>&nbsp; Leave a review &nbsp;<span class="chevron">▾</span>
+      </button>
+ 
+      <div class="reviews-modal-leave" id="leavePanel">
+        <p class="leave-title">Share Your <em>Glow Story</em></p>
+        <div class="leave-form" id="leaveForm">
+          <input type="text" id="reviewName" placeholder="Your name" maxlength="40">
+          <div class="leave-star-row">
+            <label>Rating:</label>
+            <button class="star-btn" data-val="1" onclick="setReviewStar(1)">★</button>
+            <button class="star-btn" data-val="2" onclick="setReviewStar(2)">★</button>
+            <button class="star-btn" data-val="3" onclick="setReviewStar(3)">★</button>
+            <button class="star-btn" data-val="4" onclick="setReviewStar(4)">★</button>
+            <button class="star-btn" data-val="5" onclick="setReviewStar(5)">★</button>
+          </div>
+          <textarea id="reviewBody" placeholder="Tell us about your skin journey with Lumiskin…"></textarea>
+          <button class="btn-leave-submit" onclick="submitReview()">Post Review</button>
+        </div>
+        <div class="leave-success" id="leaveSuccess">✓ Thank you! Your review has been added.</div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- Myth vs Fact banner — sits right before the brand/products section -->
+  <div class="myths-banner">
+    <div class="myths-banner-text">
+      <h2>Myth or <em>Fact?</em></h2>
+      <p>Think you know your skincare? We're busting the biggest myths — backed by real science.</p>
+    </div>
+    <a href="myths.html" class="btn-myths">❌✅ &nbsp;Myth vs Fact</a>
+  </div>
+ 
+  <section id="brand-section" class="brand-showcase">
+    <h2 class="brand-title">Shop by Brand</h2>
+    <div class="brand-container">
+      <a href="#" class="brand-card">
+        <div class="brand-circle">
+          <span style="font-size:28px;font-weight:800;color:#a63a2a;letter-spacing:-1px;font-family:'Cormorant Garamond',serif;">La Roche-Posay</span>
+        </div>
+        <p class="brand-name">La Roche-Posay</p>
+      </a>
+      <a href="#" class="brand-card">
+        <div class="brand-circle">
+          <span style="font-size:22px;font-weight:800;color:#1a1a4e;font-family:'Cormorant Garamond',serif;">CeraVe</span>
+        </div>
+        <p class="brand-name">CeraVe</p>
+      </a>
+      <a href="#" class="brand-card">
+        <div class="brand-circle">
+          <span style="font-size:22px;font-weight:800;color:#2d5a3d;font-family:'Cormorant Garamond',serif;">The Ordinary</span>
+        </div>
+        <p class="brand-name">The Ordinary</p>
+      </a>
+    </div>
+  </section>
+ 
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-newsletter">
+        <h2>Your Best Skin<br>Starts Here</h2>
+        <p>Join our community and receive expert insights.</p>
+        <div class="input-group">
+          <input type="email" placeholder="Enter an email address">
+          <button type="button">↗</button>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-col">
+          <h4>Discover</h4>
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="myths.html">Skin Myths</a></li>
+          </ul>
+        </div>
+        <div class="nav-col">
+          <h4>Contact</h4>
+          <p><strong>LumiSkin Cairo</strong>Cairo, Egypt</p>
+          <p><strong>LumiSkin Alexandria</strong>Alexandria, Egypt</p>
+        </div>
+        <div class="nav-col">
+          <h4>Social Media</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+        <div class="nav-col">
+          <h4>Help & Support</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-brand">
+      <h1>LumiSkin</h1>
+    </div>
+  </footer>
+ 
+  <script src="js.js"></script>
+  <script>
+    /* ── Toggle leave-a-review panel ── */
+    function toggleLeaveForm() {
+      const panel = document.getElementById('leavePanel');
+      const btn   = document.getElementById('leaveToggleBtn');
+      const isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      if (isOpen) {
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
+      }
+    }
+ 
+    /* ── Star rating ── */
+    let reviewStars = 0;
+    function setReviewStar(val) {
+      reviewStars = val;
+      document.querySelectorAll('.star-btn').forEach(btn => {
+        btn.classList.toggle('lit', parseInt(btn.dataset.val) <= val);
+      });
+    }
+ 
+    /* ── Submit review ── */
+    function submitReview() {
+      const name = document.getElementById('reviewName').value.trim();
+      const body = document.getElementById('reviewBody').value.trim();
+      if (!name) { alert('Please enter your name.'); return; }
+      if (!body)  { alert('Please write your review.'); return; }
+      if (reviewStars === 0) { alert('Please select a star rating.'); return; }
+ 
+      const starsHtml = Array.from({length:5},(_,i) =>
+        `<i class="fas fa-star" style="color:${i < reviewStars ? 'var(--brown-dark)' : '#ddd'}"></i>`
+      ).join('');
+ 
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.style.animation = 'fadeUp 0.4s ease both';
+      card.innerHTML = `
+        <div class="review-card-top">
+          <div class="review-avatar">${name[0].toUpperCase()}</div>
+          <div><span class="review-name">${name}</span><span class="review-verified">✓ Verified</span></div>
+          <div class="review-stars">${starsHtml}</div>
+        </div>
+        <p class="review-body">"${body}"</p>
+      `;
+      document.getElementById('userReviewsList').appendChild(card);
+ 
+      // scroll list to show the new card
+      const list = document.querySelector('.reviews-modal-list');
+      setTimeout(() => list.scrollTo({ top: list.scrollHeight, behavior: 'smooth' }), 100);
+ 
+      // reset form
+      document.getElementById('leaveForm').style.display = 'none';
+      document.getElementById('leaveSuccess').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('leaveForm').style.display = 'flex';
+        document.getElementById('leaveSuccess').style.display = 'none';
+        document.getElementById('reviewName').value = '';
+        document.getElementById('reviewBody').value = '';
+        reviewStars = 0;
+        document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('lit'));
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
