@@ -385,134 +385,200 @@ footer {
   font-weight: 700;
   color: rgb(163, 108, 69,1);
 }
-
-/* Reviews Section - Lumiskin Theme */
-.reviews-page {
-    padding-top: 100px; /* Space for your absolute header */
+/* ── Obsessed bar ── */
+    .obsessed-bar {
+      background: var(--brown-dark);
+      color: var(--beige-light);
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      position: relative;
+      z-index: 200;
+      transition: background 0.2s;
+    }
+    .obsessed-bar:hover { background: var(--brown); }
+    .obsessed-bar em { font-style: italic; margin-right: 4px; }
+ /* ── Main Modal Container ── */
+.reviews-modal { 
+  max-height: 90vh !important; 
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  /* System font stack: clean and fast */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-.reviews .heading {
-    text-align: center;
-    font-size: 45px;
-    padding-bottom: 30px;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+.reviews-modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.reviews .heading span {
-    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+.reviews-modal-list { 
+  flex: 1; 
+  min-height: 0; 
+  overflow-y: auto; 
+  padding: 10px 20px;
 }
 
-.reviews .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 20px 5%;
+/* ── Review Cards ── */
+.review-card {
+  padding: 20px;
+  border-bottom: 1px solid rgb(234, 221, 207);
 }
 
-.reviews .box {
-    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
-    border-radius: 15px;
-    text-align: center;
-    padding: 30px;
-    background: #fff;
-    transition: all 0.3s ease;
+.review-card-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.reviews .box:hover {
-    transform: translateY(-5px);
-    border-color: dimgray; /* Matches your btn-primary border */
-    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+.review-avatar {
+  width: 36px;
+  height: 36px;
+  background: rgb(234, 221, 207);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 12px;
+  color: rgb(74, 55, 40);
 }
 
-.reviews .box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
+.review-name {
+  font-weight: bold;
+  color: rgb(74, 55, 40);
 }
 
-.reviews .box h3 {
-    font-size: 24px;
-    color: rgb(0, 0, 0);
-    padding: 15px 0 5px;
+.review-verified {
+  font-size: 12px;
+  color: rgb(46, 125, 50);
+  margin-left: 8px;
 }
 
-.reviews .box .stars i {
-    font-size: 18px;
-    color: rgb(136, 82, 82); /* Reddish-brown stars */
-    margin-bottom: 10px;
+.review-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(51, 51, 51);
 }
 
-.reviews .box p {
-    font-size: 16px;
-    color: dimgray;
-    line-height: 1.6;
+/* ── Leave Review Section ── */
+.leave-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  background: rgb(249, 247, 242);
+  border: none;
+  border-top: 1px solid rgb(234, 221, 207);
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(74, 55, 40);
+  cursor: pointer;
 }
 
-/* Reviews Section - Lumiskin Theme */
-.reviews-page {
-    padding-top: 100px; /* Space for your absolute header */
+.reviews-modal-leave {
+  background: rgb(249, 247, 242);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  padding: 0 30px;
 }
 
-.reviews .heading {
-    text-align: center;
-    font-size: 45px;
-    padding-bottom: 30px;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+.reviews-modal-leave.open {
+  max-height: 450px;
+  padding: 20px 30px;
 }
 
-.reviews .heading span {
-    color: rgb(136, 82, 82); /* Matches your Lumiskin title accent */
+.leave-title {
+  /* Using Georgia for a classic look without a custom download */
+  font-family: Georgia, serif;
+  font-size: 22px;
+  color: rgb(74, 55, 40);
+  margin-bottom: 15px;
 }
 
-.reviews .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 20px 5%;
+.leave-form input,
+.leave-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(234, 221, 207);
+  border-radius: 5px;
+  font-family: inherit;
 }
 
-.reviews .box {
-    border: 2px solid rgba(105, 105, 105, 0.1); /* Subtle dimgray border */
-    border-radius: 15px;
-    text-align: center;
-    padding: 30px;
-    background: #fff;
-    transition: all 0.3s ease;
+.btn-leave-submit {
+  background: rgb(74, 55, 40);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.reviews .box:hover {
-    transform: translateY(-5px);
-    border-color: dimgray; /* Matches your btn-primary border */
-    box-shadow: 0 10px 20px rgba(136, 82, 82, 0.1);
+/* ── Close Button ── */
+.reviews-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: rgb(74, 55, 40);
 }
-
-.reviews .box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.reviews .box h3 {
-    font-size: 24px;
-    color: rgb(0, 0, 0);
-    padding: 15px 0 5px;
-}
-
-.reviews .box .stars i {
-    font-size: 18px;
-    color: rgb(136, 82, 82); /* Reddish-brown stars */
-    margin-bottom: 10px;
-}
-
-.reviews .box p {
-    font-size: 16px;
-    color: dimgray;
-    line-height: 1.6;
-}
+ 
+    /* ── Myth vs Fact banner ── */
+    .myths-banner {
+      padding: 50px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      background: linear-gradient(120deg, var(--beige-mid) 0%, var(--beige) 100%);
+      flex-wrap: wrap;
+    }
+    .myths-banner-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 700;
+      color: var(--brown); line-height: 1.1; margin-bottom: 10px;
+    }
+    .myths-banner-text h2 em { font-style: italic; color: rgb(136,82,82); }
+    .myths-banner-text p { font-size: 15px; color: #777; max-width: 380px; line-height: 1.65; }
+ 
+    .btn-myths {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      background: var(--brown-dark); color: var(--beige-light);
+      border-radius: 99px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(163,108,69,0.3);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-myths:hover {
+      background: var(--brown);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(163,108,69,0.4);
+    }
 
 /*quiz*/
  *, *::before, *::after {
