@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiskin Admin | Earthy Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>LUMISKIN</h2>
+    <ul>
+        <li onclick="showSection('dashboard')">Overview</li>
+        <li onclick="showSection('users')">Manage Users</li>
+    </ul>
+</nav>
+
+<main class="main-content">
+    <div id="dashboardSection" class="management-section">
+        <h1>Dashboard Overview</h1>
+        <div class="card-row">
+            <div class="card">
+                <small>NET SALES</small>
+                <h2 class="stat-value">$12,450.00</h2>
+            </div>
+            <div class="card">
+                <small>TOTAL REGISTERED USERS</small>
+                <h2 class="stat-value" id="userCount">0</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="userSection" class="management-section" style="display:none;">
+        <h1>User Management</h1>
+        <div class="input-group">
+            <input type="hidden" id="editUserId">
+            <input type="text" id="userName" placeholder="Full Name">
+            <input type="email" id="userEmail" placeholder="Email Address">
+            <button id="submitBtn" class="btn-add" onclick="handleUserSubmit()">Add User</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                </tbody>
+        </table>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
