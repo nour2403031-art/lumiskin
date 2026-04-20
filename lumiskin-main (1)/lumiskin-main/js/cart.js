@@ -2,7 +2,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
-}
+} 
 
 function displayCart() {
     const cartItemsEl = document.getElementById('cartItems');
