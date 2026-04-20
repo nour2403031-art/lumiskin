@@ -1,0 +1,33 @@
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.input-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-remove {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-remove:hover {
+    background-color: #cc0000;
+}
+
+.management-section {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
