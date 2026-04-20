@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumiskin - Login</title>
     <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/login.js"></script> 
 </head>
 <body>
 
@@ -22,7 +21,7 @@
 
         <div class="nav-buttons">
             <a href="login.html" class="btn-secondary"><b>Account</b></a>
-            <a href="cart.html" class="btn-primary"><b>Cart</b></a><br>    
+            <a href="cart.html" class="btn-primary"><b>Cart</b></a>
         </div>  
     </div>
 </header>
@@ -35,19 +34,19 @@
 
     <div class="panel-form">
         <div class="login-box">
-            <div><h2 class="login-title">Login</h2></div>
+            <h2 class="login-title">Login</h2>
 
             <div class="login-body">
                 <form class="login-form" onsubmit="event.preventDefault(); validateLogin();">
-                    <label for="Email">Email</label>
-                    <input type="email" name="Email" id="Login_Email" placeholder="Enter your email" required><br>
+                    <label for="Login_Email">Email</label>
+                    <input type="email" id="Login_Email" placeholder="Enter your email" autocomplete="username" required>
 
-                    <label for="Password">Password</label>
-                    <input type="password" name="Password" id="Login_Password" placeholder="Enter your password" required>
+                    <label for="Login_Password">Password</label>
+                    <input type="password" id="Login_Password" placeholder="Enter your password" autocomplete="current-password" required>
 
                     <button type="submit" class="btn-primary" id="log">Login</button>
-                    
-                    <p id="error-msg" style="color: #a36c45; font-size: 14px; margin-top: 10px; display: none;">Invalid credentials.</p>
+
+                    <p id="error-msg" style="color:#a36c45; font-size:14px; margin-top:10px; display:none;"></p>
 
                     <div class="form-links">
                         <a href="forgot-password.html">Forgot your password?</a>
@@ -59,7 +58,7 @@
     </div>
 </div>
 
-
-
+<!-- Fixed: was login.js (non-existent), now correctly points to auth.js -->
+<script src="../js/auth.js"></script>
 </body>
 </html>
