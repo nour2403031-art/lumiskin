@@ -4,139 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumiskin Admin | Earthy Management</title>
-    <style>
-        /* CSS with your specific RGB colors */
-        :root {
-            --accent-warm: rgb(163, 108, 69);     /* Warm Terracotta */
-            --bg-cream: rgb(233, 221, 206);       /* Creamy Sand */
-            --sidebar-deep: rgb(147, 97, 62);     /* Deep Earthy Brown */
-            --main-bg: rgb(243, 241, 238);        /* Soft Off-White */
-        }
-
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            display: flex; 
-            background: var(--main-bg);
-            color: #333;
-        }
-
-        /* Sidebar Styles */
-        .sidebar { 
-            width: 260px; 
-            background: var(--sidebar-deep); 
-            color: white; 
-            height: 100vh; 
-            padding: 30px 20px; 
-            position: fixed; 
-            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h2 { 
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 15px;
-            letter-spacing: 3px;
-            text-align: center;
-        }
-
-        .sidebar ul { list-style: none; padding: 0; margin-top: 40px; }
-        
-        .sidebar li { 
-            padding: 15px 20px; 
-            cursor: pointer; 
-            border-radius: 8px;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .sidebar li:hover { 
-            background: var(--accent-warm); 
-            transform: translateX(5px);
-        }
-
-        /* Main Area Styles */
-        .main-content { 
-            margin-left: 300px; 
-            padding: 50px; 
-            width: calc(100% - 300px); 
-        }
-
-        h1 { color: var(--sidebar-deep); margin-bottom: 30px; }
-
-        .card-row { display: flex; gap: 25px; margin-bottom: 40px; }
-        
-        .card { 
-            background: var(--bg-cream); 
-            padding: 30px; 
-            border-radius: 15px; 
-            flex: 1; 
-            border: 1px solid rgba(163,108,69,0.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .card small { color: var(--sidebar-deep); font-weight: bold; letter-spacing: 1px; }
-
-        /* Form Styles */
-        .input-group { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 15px; 
-            margin-bottom: 30px; 
-            display: flex; 
-            gap: 15px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        input { 
-            padding: 12px 15px; 
-            border: 2px solid var(--bg-cream); 
-            border-radius: 8px; 
-            flex: 1; 
-            outline: none;
-            font-size: 14px;
-        }
-
-        input:focus { border-color: var(--accent-warm); }
-        
-        button { 
-            padding: 12px 25px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-weight: 700; 
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-
-        .btn-add { background: var(--accent-warm); color: white; }
-        .btn-add:hover { filter: brightness(1.1); }
-        
-        .btn-edit { background: var(--sidebar-deep); color: white; margin-right: 5px; }
-        .btn-remove { background: #c0392b; color: white; }
-        .btn-remove:hover { background: #a93226; }
-
-        /* Table Styles */
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            background: white; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        th { 
-            background: var(--bg-cream); 
-            padding: 18px; 
-            text-align: left; 
-            font-weight: 700;
-            color: var(--sidebar-deep);
-        }
-
-        td { padding: 18px; border-bottom: 1px solid #f0f0f0; }
-        tr:last-child td { border-bottom: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -149,21 +17,21 @@
 </nav>
 
 <main class="main-content">
-    <div id="dashboardSection">
+    <div id="dashboardSection" class="management-section">
         <h1>Dashboard Overview</h1>
         <div class="card-row">
             <div class="card">
                 <small>NET SALES</small>
-                <h2 style="margin: 10px 0; font-size: 28px;">$12,450.00</h2>
+                <h2 class="stat-value">$12,450.00</h2>
             </div>
             <div class="card">
                 <small>TOTAL REGISTERED USERS</small>
-                <h2 style="margin: 10px 0; font-size: 28px;" id="userCount">0</h2>
+                <h2 class="stat-value" id="userCount">0</h2>
             </div>
         </div>
     </div>
 
-    <div id="userSection" style="display:none;">
+    <div id="userSection" class="management-section" style="display:none;">
         <h1>User Management</h1>
         <div class="input-group">
             <input type="hidden" id="editUserId">
@@ -187,92 +55,6 @@
     </div>
 </main>
 
-<script>
-    // Initial User Data
-    let users = [
-        { id: 1, name: "Noura Admin", email: "noura@lumiskin.com", role: "Admin" },
-        { id: 2, name: "Lina Skin", email: "lina@test.com", role: "Customer" }
-    ];
-
-    // Load Data into Table
-    function renderUsers() {
-        const table = document.getElementById('userTable');
-        document.getElementById('userCount').innerText = users.length;
-        
-        table.innerHTML = users.map(user => `
-            <tr>
-                <td><strong>${user.name}</strong></td>
-                <td>${user.email}</td>
-                <td><span style="color: rgb(163, 108, 69); font-weight:bold;">${user.role}</span></td>
-                <td>
-                    <button class="btn-edit" onclick="editUser(${user.id})">Edit</button>
-                    <button class="btn-remove" onclick="removeUser(${user.id})">Remove</button>
-                </td>
-            </tr>
-        `).join('');
-    }
-
-    // Add or Update User
-    function handleUserSubmit() {
-        const id = document.getElementById('editUserId').value;
-        const name = document.getElementById('userName').value;
-        const email = document.getElementById('userEmail').value;
-
-        if (!name || !email) {
-            alert("Please provide both a Name and an Email.");
-            return;
-        }
-
-        if (id) {
-            // EDIT Mode
-            const index = users.findIndex(u => u.id == id);
-            users[index].name = name;
-            users[index].email = email;
-            
-            // Reset button to Add Mode
-            document.getElementById('submitBtn').innerText = "Add User";
-            document.getElementById('submitBtn').style.background = "rgb(163, 108, 69)";
-            document.getElementById('editUserId').value = "";
-        } else {
-            // ADD Mode
-            users.push({ id: Date.now(), name, email, role: "Customer" });
-        }
-
-        // Clear Inputs
-        document.getElementById('userName').value = "";
-        document.getElementById('userEmail').value = "";
-        renderUsers();
-    }
-
-    // Populate form for editing
-    function editUser(id) {
-        const user = users.find(u => u.id == id);
-        document.getElementById('userName').value = user.name;
-        document.getElementById('userEmail').value = user.email;
-        document.getElementById('editUserId').value = user.id;
-        
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = "Update User";
-        btn.style.background = "rgb(147, 97, 62)";
-    }
-
-    // Remove User
-    function removeUser(id) {
-        if(confirm("Are you sure you want to remove this user from Lumiskin?")) {
-            users = users.filter(user => user.id !== id);
-            renderUsers();
-        }
-    }
-
-    // Switch between Dashboard and Users
-    function showSection(section) {
-        document.getElementById('dashboardSection').style.display = section === 'dashboard' ? 'block' : 'none';
-        document.getElementById('userSection').style.display = section === 'users' ? 'block' : 'none';
-    }
-
-    // Start
-    window.onload = renderUsers;
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
