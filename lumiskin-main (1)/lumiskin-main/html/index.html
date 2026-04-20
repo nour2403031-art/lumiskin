@@ -59,74 +59,80 @@
     </div>
 </section>
 
-    <!-- REVIEWS SECTION - only this part changed -->
-    <section class="reviews">
-        <h1 class="heading">Real <span>Results</span></h1>
- 
-        <div class="review-peek" id="review-peek" onclick="openReviewModal()">
-            <div class="peek-img-placeholder">KB</div>
-            <div class="peek-body">
-                <div class="peek-name">Kenzy Bedewy</div>
-                <div class="peek-stars">★★★★★</div>
-                <div class="peek-text">"Very good quality and looks great. My redness cleared completely — I've never felt more confident without makeup."</div>
-                <div class="peek-product">Barrier Repair Serum</div>
-                <div class="peek-cta" id="peek-cta">See all 6 reviews →</div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- Reviews Modal -->
-    <div class="review-modal-bg" id="review-modal-bg">
-        <div class="review-modal">
-            <div class="review-modal-head">
-                <div class="review-modal-head-left">
-                    <div class="review-modal-title">All reviews</div>
-                    <div class="review-modal-sub" id="review-count-label">6 reviews · ★★★★★ 5.0</div>
-                </div>
-                <div class="review-modal-actions">
-                    <button class="review-write-btn" onclick="toggleReviewForm()">+ Write a review</button>
-                    <button class="review-close-x" onclick="closeReviewModal()">✕</button>
-                </div>
-            </div>
- 
-            <div class="review-form-section" id="review-form-section">
-                <div class="review-form-inner">
-                    <div class="review-form-title">Leave a review</div>
-                    <div>
-                        <label class="review-f-label">Your name</label>
-                        <input class="review-f-input" id="rf-name" placeholder="e.g. Nour" />
-                    </div>
-                    <div>
-                        <label class="review-f-label">Rating</label>
-                        <div class="review-star-row" id="review-star-row">
-                            <span class="review-s-star" data-v="1">★</span>
-                            <span class="review-s-star" data-v="2">★</span>
-                            <span class="review-s-star" data-v="3">★</span>
-                            <span class="review-s-star" data-v="4">★</span>
-                            <span class="review-s-star" data-v="5">★</span>
-                        </div>
-                    </div>
-                      <div>
-                        <label class="review-f-label">Skin concern</label>
-                        <input class="review-f-input" id="rf-concern" placeholder="e.g. Acne, Redness..." />
-                    </div>
-                    <div>
-                        <label class="review-f-label">Product used</label>
-                        <input class="review-f-input" id="rf-product" placeholder="e.g. Brightening Eye Concentrate" />
-                    </div>
-                    <div>
-                        <label class="review-f-label">Your review</label>
-                        <textarea class="review-f-textarea" id="rf-review" placeholder="Share your experience..."></textarea>
-                    </div>
-                    <button class="review-submit-btn" onclick="submitReview()">Submit review</button>
-                    <div class="review-success-note" id="review-success-note">Thank you! Your review has been added ★</div>
-                </div>
-            </div>
- 
-            <div class="review-modal-scroll" id="review-modal-scroll"></div>
-        </div>
+   <section class="reviews">
+  <p class="section-label">What our customers say</p>
+  <h1 class="heading">Real <span>Results</span></h1>
+  <div class="divider"></div>
+
+  <div class="box-container" id="reviewsGrid">
+    <div class="box">
+      <img src="../images/img 1 girl.jpg" alt="Nour">
+      <h3>Nour</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"Lumiskin completely cleared my redness. I've never felt more confident!"</p>
     </div>
-    <!-- END REVIEWS SECTION -->
+    <div class="box">
+      <img src="../images/img 2 girl.jpg" alt="Jana">
+      <h3>Jana</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"The glow is real! My dark circles have faded so much since I started."</p>
+    </div>
+    <div class="box">
+      <img src="../images/img 3 girl.jpg" alt="Lina">
+      <h3>Lina</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"Targeting my hyperpigmentation was a struggle until I found Lumiskin."</p>
+    </div>
+    <div class="box">
+      <img src="../images/img 4 girl.jpg" alt="Hadeel">
+      <h3>Hadeel</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"Acne-free for the first time in 5 years. This feels like a dream."</p>
+    </div>
+    <div class="box">
+      <img src="../images/img 5 girl.jpg" alt="Nouran">
+      <h3>Nouran</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"The best skincare investment. The results speak for themselves."</p>
+    </div>
+    <div class="box">
+      <img src="../images/img 6 girl.jpg" alt="Dina">
+      <h3>Dina</h3>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>"Lumiskin is now a permanent part of my life. My skin texture is 100% better."</p>
+    </div>
+  </div>
+
+  <!-- Add Review Form -->
+  <div class="add-review-wrapper">
+    <p class="form-title">Share your glow ✨</p>
+    <p class="form-sub">Your experience might inspire someone else's skincare journey.</p>
+
+    <div class="form-row">
+      <label for="reviewName">Your name</label>
+      <input type="text" id="reviewName" placeholder="e.g. Sara" maxlength="30" />
+    </div>
+
+    <div class="form-row">
+      <label>Your rating</label>
+      <div class="star-picker" id="starPicker">
+        <span data-v="1">★</span>
+        <span data-v="2">★</span>
+        <span data-v="3">★</span>
+        <span data-v="4">★</span>
+        <span data-v="5">★</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="reviewText">Your review</label>
+      <textarea id="reviewText" placeholder="Tell us about your Lumiskin experience..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitReview()">Post My Review</button>
+    <div class="review-toast" id="reviewToast">🌟 Thank you! Your review has been added.</div>
+  </div>
+</section>
 
     <section id="brand-section" class="brand-showcase">
     <h2 class="brand-title">Shop by Brand</h2>
