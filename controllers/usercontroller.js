@@ -9,6 +9,7 @@ exports.postLogin = async (req, res) => {
   const found = await User.findOne({ email, password });
   if (found) {
     req.session.user = found.name;
+    req.session.userId = found._id.toString();
     res.redirect('/');
   } else {
     res.render('login', { user: '', error: 'Invalid email or password' });
@@ -38,4 +39,26 @@ exports.logout = (req, res) => {
 
 exports.getCart = (req, res) => {
   res.render('cart', { user: req.session.user || '' });
+};
+
+// GET /user/cart/data — returns the logged-in user's cart as JSON
+exports.getCartData = async (req, res) => {
+  if (!req.session.userId) {
+    return res.json({ loggedIn: false, cart: [] });
+  }
+  const user = await User.findById(req.session.userId).select('cart');
+  res.json({ loggedIn: true, cart: user ? user.cart : [] });
+};
+
+// POST /user/cart/save — saves the full cart array to MongoDB
+exports.saveCart = async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+  const { cart } = req.body;
+  if (!Array.isArray(cart)) {
+    return res.status(400).json({ error: 'Invalid cart data' });
+  }
+  await User.findByIdAndUpdate(req.session.userId, { cart });
+  res.json({ success: true });
 };
