@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiskin - Create Account</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <header>
+        <div class="container"> 
+            <nav>
+                <ul class="navbuttons">
+                    <li><a href="/"><b>Home</b></a></li>
+                    <li><a href="/#brand-section"><b>Products</b></a></li>
+                    <li><a href="/about"><b>About</b></a></li>
+                </ul>
+            </nav>
+            <a href="/" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>
+            <div class="nav-buttons">
+                <a href="/user/login" class="btn-secondary"><b>Account</b></a>
+                <a href="/user/cart" class="btn-primary"><b>Cart</b></a>
+            </div>  
+        </div>
+    </header>
+
+    <div class="split-layout">
+        <div class="panel-image">
+            <img src="/images/skin2.jpg" alt="Skincare">
+            <p class="tagline">It's time to invest in your <strong>SKIN.</strong></p>
+        </div>
+
+        <div class="panel-form-signup">
+            <div class="signup-box">
+                <h2 class="signup-title">Create Account</h2>
+                <div class="signup-body">
+                    <form class="signup-form" action="/user/signup" method="POST">
+
+                        <% if (error !== '') { %>
+                            <p style="color:#a36c45; font-size:14px; margin-top:10px;"><%= error %></p>
+                        <% } %>
+
+                        <label for="Fname">First Name</label>
+                        <input type="text" name="fname" id="Fname" placeholder="Enter your first name">
+
+                        <label for="Lname">Last Name</label>
+                        <input type="text" name="lname" id="Lname" placeholder="Enter your last name">
+
+                        <label for="Email">Email</label>
+                        <input type="text" name="email" id="Email" placeholder="Enter your email">
+
+                        <label for="Password">Password</label>
+                        <input type="password" name="password" id="Password" placeholder="Min 8 chars, 1 uppercase, 1 number">
+
+                        <label for="Confirm_Password">Confirm Password</label>
+                        <input type="password" name="confirmPassword" id="Confirm_Password" placeholder="Repeat your password">
+
+                        <button type="submit" class="btn-primary" id="log">Create Account</button>
+
+                        <div class="form-links">
+                            <p>Already have an account? <a href="/user/login">Log in!</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

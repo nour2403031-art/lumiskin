@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiskin - Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<header>
+    <div class="container"> 
+        <nav>
+            <ul class="navbuttons">
+                <li><a href="/"><b>Home</b></a></li>
+                <li><a href="/#brand-section"><b>Products</b></a></li>
+                <li><a href="/about"><b>About</b></a></li>
+            </ul>
+        </nav>
+        <a href="/" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>
+        <div class="nav-buttons">
+            <a href="/user/login" class="btn-secondary"><b>Account</b></a>
+            <a href="/user/cart" class="btn-primary"><b>Cart</b></a>
+        </div>  
+    </div>
+</header>
+  
+<div class="split-layout">
+    <div class="panel-image">
+        <img src="/images/skin2.jpg" alt="Skincare">
+        <p class="tagline">Time to invest in your <strong>SKIN</strong></p>
+    </div>
+
+    <div class="panel-form">
+        <div class="login-box">
+            <h2 class="login-title">Login</h2>
+            <div class="login-body">
+                <form class="login-form" action="/user/login" method="POST">
+
+                    <% if (error !== '') { %>
+                        <p style="color:#a36c45; font-size:14px; margin-top:10px;"><%= error %></p>
+                    <% } %>
+
+                    <label for="Login_Email">Email</label>
+                    <input type="text" id="Login_Email" name="email" placeholder="Enter your email" required>
+
+                    <label for="Login_Password">Password</label>
+                    <input type="password" id="Login_Password" name="password" placeholder="Enter your password" required>
+
+                    <button type="submit" class="btn-primary" id="log">Login</button>
+
+                    <div class="form-links">
+                        <p>Don't have an account? <a href="/user/signup">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
