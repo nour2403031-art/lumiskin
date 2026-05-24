@@ -27,7 +27,7 @@ app.set('views', './views');
 
 // Routes
 const indexRoutes = require('./routes/index');
-const userRoutes  = require('./routes/user');
+const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 
 app.use('/', indexRoutes);
@@ -36,9 +36,7 @@ app.use('/admin', adminRoutes);
 
 // 404 page
 app.use((req, res) => {
-  res.status(404).render('404', {
-    user: req.session.user === undefined ? '' : req.session.user
-  });
+  res.status(404).send('Page not found');
 });
 
 app.listen(8080, () => {
