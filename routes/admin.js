@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const adminController = require('../controllers/adminController');
+const adminController = require('../controllers/admincontroller');
+const { requireLogin } = require('../middleware/auth');
 
-router.get('/', adminController.getDashboard);
+// Admin page requires login
+router.get('/', requireLogin, adminController.getDashboard);
 
 module.exports = router;
