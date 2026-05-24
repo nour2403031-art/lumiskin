@@ -35,10 +35,18 @@ app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
-// 404 page
+
+// 404 — page not found
 app.use((req, res) => {
-  res.status(404).send('Page not found');
+  res.status(404).render('404', {});
 });
+
+// 500 — server error
+app.use((err, req, res, next) => {
+  console.error('Server error:', err.message);
+  res.status(500).render('500', {});
+});
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running! Open http://localhost:${process.env.PORT}`);
