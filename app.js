@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
@@ -6,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/lumiskin')
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Database connected!'))
   .catch(() => console.log('Database connection failed, but server is still running.'));
 
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(fileUpload());
 app.use(express.static('public'));
 app.use(session({
-  secret: 'lumiskin_secret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -39,6 +40,6 @@ app.use((req, res) => {
   res.status(404).send('Page not found');
 });
 
-app.listen(8080, () => {
-  console.log('Server running! Open http://localhost:8080');
+app.listen(process.env.PORT, () => {
+  console.log(`Server running! Open http://localhost:${process.env.PORT}`);
 });
