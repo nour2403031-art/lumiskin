@@ -30,7 +30,7 @@ const path = require('path');
 
 // Tell express exactly where your views folder is using an absolute path
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
 
 // Routes
 const indexRoutes = require('./routes/index');
