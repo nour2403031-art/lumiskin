@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
@@ -62,4 +63,12 @@ const sslOptions = {
 
 https.createServer(sslOptions, app).listen(8443, () => {
   console.log(' HTTPS running at https://localhost:8443');
+});
+
+// ── Redirect HTTP to HTTPS ────────────────────────────────────────────────────
+http.createServer((req, res) => {
+  res.writeHead(301, { Location: 'https://localhost:8443' + req.url });
+  res.end();
+}).listen(8080, () => {
+  console.log(' HTTP redirect running at http://localhost:8080');
 });
