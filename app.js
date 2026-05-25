@@ -43,6 +43,8 @@ app.use((req, res) => {
 app.listen(8080, () => {
   console.log('Server running! Open http://localhost:8080');
 });
+
+module.exports = app;
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Lumiskin server is running on port ${PORT}`);
