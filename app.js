@@ -6,10 +6,11 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/lumiskin')
-  .then(() => console.log('Database connected!'))
-  .catch(() => console.log('Database connection failed, but server is still running.'));
+const DB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/lumiskin";
 
+mongoose.connect(DB_URI)
+  .then(() => console.log("Connected to MongoDB successfully! "))
+  .catch((err) => console.error("MongoDB connection error:", err));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -41,4 +42,8 @@ app.use((req, res) => {
 
 app.listen(8080, () => {
   console.log('Server running! Open http://localhost:8080');
+});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Lumiskin server is running on port ${PORT}`);
 });
