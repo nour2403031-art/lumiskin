@@ -6,9 +6,6 @@ exports.getAbout = (req, res) => {
   res.render('about', { user: req.session.user || '' });
 };
 
-exports.getProducts = (req, res) => {
-  res.render('products', { user: req.session.user || '' });
-};
 
 exports.getQuiz = (req, res) => {
   res.render('quiz', { user: req.session.user || '' });
