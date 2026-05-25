@@ -17,9 +17,13 @@ app.use(express.json());
 app.use(fileUpload());
 app.use(express.static('public'));
 app.use(session({
-  secret: 'lumiskin_secret',
-  resave: false,
-  saveUninitialized: false
+    secret: process.env.SESSION_SECRET || 'lumiskinSecretKeyKeyKey', 
+    resave: true, // Forces the session to be saved back to the session store
+    saveUninitialized: true,
+    cookie: { 
+        secure: false, // Set to true if your site uses full HTTPS redirection, false works fine for testing
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
 
 // View engine
