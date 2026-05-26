@@ -7,6 +7,7 @@ const app = express();
 //
 // Connect to MongoDB
 const DB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/lumiskin";
+const path = require('path');
 
 mongoose.connect(DB_URI)
   .then(() => console.log("Connected to MongoDB successfully! "))
@@ -15,7 +16,8 @@ mongoose.connect(DB_URI)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(session({
     secret: process.env.SESSION_SECRET || 'lumiskinSecretKeyKeyKey', 
     resave: true, // Forces the session to be saved back to the session store
@@ -26,11 +28,12 @@ app.use(session({
     }
 }));
 
-const path = require('path');
+
+
 
 // Tell express exactly where your views folder is using an absolute path
 app.set('views', path.join(__dirname, 'views'));
-
+app.set('view engine', 'ejs');
 
 // Routes
 const indexRoutes = require('./routes/index');
