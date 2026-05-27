@@ -6,30 +6,11 @@
     <title>LumiSkin – Cart</title>
     <link rel="stylesheet" href="/css/cart.css">
     <link rel="stylesheet" href="/css/login.css">
+
 </head>
 <body> 
 
-<header>
-    <div class="container">
-        <nav>
-            <ul class="navbuttons">
-                <li><a href="/"><b>Home</b></a></li>
-                <li><a href="/#brand-section"><b>Products</b></a></li>
-                <li><a href="/about"><b>About</b></a></li>
-            </ul>
-        </nav>
-        <a href="/" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>
-        <div class="nav-buttons">
-            <% if (user !== '') { %>
-                <span class="btn-secondary"><b><%= user %></b></span>
-                <a href="/user/logout" class="btn-secondary"><b>Logout</b></a>
-            <% } else { %>
-                <a href="/user/login" class="btn-secondary"><b>Account</b></a>
-            <% } %>
-            <a href="/user/cart" class="btn-secondary"><b>Cart</b></a>
-        </div>
-    </div>
-</header>
+<%- include('partials/header') %>
 
 <main class="cart-main">
     <h1 class="cart-heading">Your Cart</h1>
@@ -55,5 +36,6 @@
 </main>
 
 <script src="/js/cart.js"></script>
+ 
 </body>
 </html>

@@ -5,81 +5,11 @@
         box-sizing: border-box;
 }
 
-header, main, footer{ 
+main, footer{ 
     display: flex;
     flex-direction: column;
 }
 
-/*first page---------------------------------------------------------------------------------------------------------------------------------------------------*/
-header{
-    width: 100%;
-    padding: 0px 0px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background-color: rgba(233, 221, 206, 0.95);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 12px rgba(163, 108, 69, 0.1);
-}
-
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-}
-
-.logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logotext{
-    color: rgb(147, 97, 62);
-    font-size: 36px;
-    font-weight: bold;
-}
-
-nav ul{
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    margin:0;
-    padding:0;
-}
-
-nav a{
-    text-decoration: none;
-    color: rgb(147, 97, 62);
-    font-size: 22px;
-    position: relative;
-    padding: 5px 0;
-     transition: all 0.3s ease;
-}
-
-
- nav a::after {
-    content: '';
-    height: 2px;
-    background-color: rgb(243, 241, 238,1);
-    position: absolute;
-    bottom:0;
-    left: 0;
-    width: 0;
-     transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-.nav-buttons{
-    display: flex;
-    gap: 10px;
-}    
 
 .btn-primary, .btn-secondary{
     display: block;

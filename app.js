@@ -1,41 +1,48 @@
+require('dotenv').config();
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const mongoose = require('mongoose');
 
 const app = express();
-//
-// Connect to MongoDB
-const DB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/lumiskin";
-const path = require('path');
 
-mongoose.connect(DB_URI)
-  .then(() => console.log("Connected to MongoDB successfully! "))
-  .catch((err) => console.error("MongoDB connection error:", err));
-// Middleware
+// ── Database ──────────────────────────────────────────────────────────────────
+mongoose.connect(process.env.MONGO_URI, {
+  family: 4
+})
+
+  .then(() => console.log(' Database connected'))
+  .catch((err) => console.log(' Database connection failed', err.message));
+
+// ── Middleware ────────────────────────────────────────────────────────────────
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+
 
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'lumiskinSecretKeyKeyKey', 
-    resave: true, // Forces the session to be saved back to the session store
-    saveUninitialized: true,
-    cookie: { 
-        secure: false, // Set to true if your site uses full HTTPS redirection, false works fine for testing
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
-    }
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,
+    maxAge: 1000 * 60 * 60 * 24
+  }
 }));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || '';
+  res.locals.role = req.session.role || '';
+  next();
+});
 
-
-
-
-// Tell express exactly where your views folder is using an absolute path
-app.set('views', path.join(__dirname, 'views'));
+// ── View Engine ───────────────────────────────────────────────────────────────
 app.set('view engine', 'ejs');
 
-// Routes
+// ── Routes ────────────────────────────────────────────────────────────────────
 const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
@@ -44,13 +51,25 @@ app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
-// 404 page
+// ── 404 Handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
-  res.status(404).send('Page not found');
+  res.status(404).render('404', {});
 });
 
-app.listen(8080, () => {
-  console.log('Server running! Open http://localhost:8080');
+// ── 500 Handler ───────────────────────────────────────────────────────────────
+app.use((err, req, res, next) => {
+  console.error('Server error:', err.message);
+  res.status(500).render('500', {});
+});
+
+// ── HTTPS Server ──────────────────────────────────────────────────────────────
+const sslOptions = {
+  key: fs.readFileSync('cert.key'),
+  cert: fs.readFileSync('cert.crt')
+};
+
+https.createServer(sslOptions, app).listen(8443, () => {
+  console.log(' HTTPS running at https://localhost:8443');
 });
 
 module.exports = app;

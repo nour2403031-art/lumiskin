@@ -4,83 +4,11 @@
     box-sizing: border-box;
 }
  
-header,
 main,
 footer {
     display: flex;
     flex-direction: column;
 
-}
-
-/*first page---------------------------------------------------------------------------------------------------------------------------------------------------*/
-header {
-    width: 100%;
-    padding: 0px 0px;
-    position: absolute;
-}
-
-body {
-    background-color: rgb(233, 221, 206, 1);
-    line-height: 1.6;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logotext {
-    color: rgb(147, 97, 62);
-    ;
-    font-size: 60px;
-    font-weight: bold;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: rgb(147, 97, 62);
-    font-size: 22px;
-    position: relative;
-    padding: 5px 0;
-    transition: all 0.3s ease;
-}
-
-
-nav a::after {
-    content: '';
-    height: 2px;
-    background-color: rgb(243, 241, 238, 1);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
 }
 
 .btn-primary,
@@ -616,3 +544,4 @@ footer {
     background: #885252;
     transform: scale(1.05);
 }
+
