@@ -6,32 +6,11 @@
   <title>Lumiskin — Skin Myths Busted</title>
   <link rel="stylesheet" href="/css/mythvsfact.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
 </head>
 <body>
  
-  <header>
-    <div class="container">
-      <nav>
-        <ul class="navbuttons">
-          <li><a href="/"><b>Home</b></a></li>
-          <li><a href="/#brand-section"><b>Products</b></a></li>
-          <li><a href="/mythvsfact"><b>Skin Myths</b></a></li>
-        </ul>
-      </nav>
-      <a href="/" class="logo">
-        <div class="logotext"><i>Lumiskin</i></div>
-      </a>
-      <div class="nav-buttons">
-        <% if (user !== '') { %>
-            <span class="btn-secondary"><b><%= user %></b></span>
-            <a href="/user/logout" class="btn-secondary"><b>Logout</b></a>
-        <% } else { %>
-            <a href="/user/login" class="btn-secondary"><b>Account</b></a>
-        <% } %>
-        <a href="/user/cart" class="btn-primary"><b>Cart</b></a>
-      </div>
-    </div>
-  </header>
+  <%- include('partials/header') %>
  
   <!-- Hero -->
   <div class="myths-hero">
@@ -119,5 +98,6 @@
   </footer>
  
   <script src="/js/mythvsfact.js"></script>
+   
 </body>
 </html>

@@ -14,5 +14,6 @@ router.get('/logout', requireLogin, userController.logout);
 router.get('/cart', requireLogin, userController.getCart);
 router.get('/cart/data', requireLogin, userController.getCartData);
 router.post('/cart/save', requireLogin, userController.saveCart);
-
+router.get('/profile', userController.getProfile);
+router.post('/profile', userController.updateProfile);
 module.exports = router;

@@ -4,7 +4,6 @@ const indexController = require('../controllers/indexController');
 
 router.get('/', indexController.getHome);
 router.get('/about', indexController.getAbout);
-router.get('/products', indexController.getProducts);
 router.get('/quiz', indexController.getQuiz);
 router.get('/mythvsfact', indexController.getMythVsFact);
 router.get('/cerave', indexController.getCerave);

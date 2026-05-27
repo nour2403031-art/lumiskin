@@ -9,15 +9,19 @@ const mongoose = require('mongoose');
 const app = express();
 
 // ── Database ──────────────────────────────────────────────────────────────────
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+  family: 4
+})
+
   .then(() => console.log(' Database connected'))
-  .catch(() => console.log(' Database connection failed'));
+  .catch((err) => console.log(' Database connection failed', err.message));
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
 app.use(express.static('public'));
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -29,6 +33,11 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24
   }
 }));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || '';
+  res.locals.role = req.session.role || '';
+  next();
+});
 
 // ── View Engine ───────────────────────────────────────────────────────────────
 app.set('view engine', 'ejs');

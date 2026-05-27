@@ -1,82 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CeraVe | LumiSkin</title>
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/products.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+<body>
+<%- include('partials/header') %>
 
-<body style="background-color: rgb(233, 221, 206); margin: 0; padding: 0;">
+<section class="brand-products-section" style="padding-top: 100px;">
+    <div style="padding: 20px 5% 0 5%;">
+        <a href="/#brand-section" style="text-decoration:none; color:#1a1a1a; font-weight:600; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">← Back to Brands</a>
+    </div>
 
-    <section class="brand-products-section">
-        <div style="padding: 40px 5% 0 5%;">
-            <a href="/#brand-section" style="text-decoration: none; color: #1a1a1a; font-weight: 600;">← BACK TO BRANDS</a>
+    <div class="product-grid" style="padding: 40px 5%;">
+        <% if (products.length === 0) { %>
+            <p style="text-align:center; color:#888; padding:60px;">No products found.</p>
+        <% } %>
+
+        <% products.forEach(product => { %>
+        <div class="product-item">
+            <div class="image-wrap">
+                <span class="tag-promo"><%= product.tag %></span>
+                <img src="/images/<%= product.image %>"  alt="<%= product.name %>" class="img-primary">
+                <img src="/images/<%= product.image2 %>" alt="<%= product.name %>" class="img-secondary">
+                <button class="add-to-cart-btn"
+                        onclick="addToCart('<%= product.name %>', <%= product.price %>)">
+                    Add To Cart
+                </button>
+                <% if (role === 'admin') { %>
+                <a href="/admin/delete-product/<%= product._id %>"
+                   onclick="return confirm('Delete this product?')"
+                   style="position:absolute; top:10px; right:10px; background:rgba(192,57,43,0.9);
+                          color:white; padding:6px 12px; border-radius:6px;
+                          text-decoration:none; font-size:11px; font-weight:700;
+                          letter-spacing:0.05em; z-index:10;">
+                   ✕ Remove
+                </a>
+                <% } %>
+            </div>
+            <div class="product-details">
+                <span class="brand-label">CERAVE</span>
+                <h3 class="product-title"><%= product.name %></h3>
+                <div class="price-row">
+                    <span class="current-price"><%= product.price %> EGP</span>
+                    <% if (role === 'admin') { %>
+                    <a href="/admin/edit-product/<%= product._id %>"
+                       style="font-size:11px; color:rgb(147,97,62); font-weight:700;
+                              text-decoration:underline; margin-left:12px;">
+                       Edit
+                    </a>
+                    <% } %>
+                </div>
+            </div>
         </div>
+        <% }) %>
+    </div>
+</section>
 
-        <div class="product-grid" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding: 40px 5%; gap: 30px; width: 100%; box-sizing: border-box;">
-
-            <div class="product-item">
-                <div class="image-wrap">
-                    <span class="tag-promo">DERM APPROVED</span>
-                    <img src="/images/CeraVe-Moisturizing-Lotion.avif" alt="CeraVe Moisturizing Lotion" class="img-primary">
-                    <img src="/images/cerave second moist.webp" alt="CeraVe Benefits" class="img-secondary">
-                    <button class="add-to-cart-btn" onclick="addToCart('CeraVe Daily Moisturizing Lotion', 650)">Add To Cart</button>
-                </div>
-                <div class="product-details">
-                    <span class="brand-label">CERAVE</span>
-                    <h3 class="product-title">Daily Moisturizing Lotion for Normal to Dry Skin 473ml</h3>
-                    <div class="price-row"><span class="current-price">650 EGP</span></div>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="image-wrap">
-                    <span class="tag-promo">CLEANSE</span>
-                    <img src="/images/foaming-cleanser-236ml-1 cerave.jpg" alt="CeraVe Foaming Cleanser" class="img-primary">
-                    <img src="/images/cerave cleanse 2.avif" alt="CeraVe Cleanser Texture" class="img-secondary">
-                    <button class="add-to-cart-btn" onclick="addToCart('CeraVe Foaming Cleanser', 550)">Add To Cart</button>
-                </div>
-                <div class="product-details">
-                    <span class="brand-label">CERAVE</span>
-                    <h3 class="product-title">Foaming Facial Cleanser for Normal to Oily Skin 236ml</h3>
-                    <div class="price-row"><span class="current-price">550 EGP</span></div>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="image-wrap">
-                    <span class="tag-promo">CLEANSE</span>
-                    <img src="/images/hydrating-cleanser-236ml-first cerave.jpg" alt="Cleanser Front" class="img-primary">
-                    <img src="/images/cerave cleanser dry skin 2.avif" alt="Cleanser Back" class="img-secondary">
-                    <button class="add-to-cart-btn" onclick="addToCart('CeraVe Hydrating Cleanser', 580)">Add To Cart</button>
-                </div>
-                <div class="product-details">
-                    <span class="brand-label">CERAVE</span>
-                    <h3 class="product-title">Hydrating Facial Cleanser for Normal to Dry Skin 236ml</h3>
-                    <div class="price-row"><span class="current-price">580 EGP</span></div>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="image-wrap">
-                    <span class="tag-promo">PROTECT</span>
-                    <img src="/images/sunblock cera 1.webp" alt="CeraVe AM Lotion" class="img-primary">
-                    <img src="/images/sunblock cera 2.avif" alt="CeraVe SPF Benefits" class="img-secondary">
-                    <button class="add-to-cart-btn" onclick="addToCart('CeraVe AM Moisturising Lotion', 1150)">Add To Cart</button>
-                </div>
-                <div class="product-details">
-                    <span class="brand-label">CERAVE</span>
-                    <h3 class="product-title">AM Facial Moisturising Lotion with SPF 50 52ml</h3>
-                    <div class="price-row"><span class="current-price">1,150 EGP</span></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <script src="/js/product.js"></script>
+<script src="/js/product.js"></script>
 </body>
 </html>

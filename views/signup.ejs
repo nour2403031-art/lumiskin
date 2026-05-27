@@ -3,68 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumiskin - Create Account</title>
+    <title>Create Account — Lumiskin</title>
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/login.css">
 </head>
+   
 <body>
-    <header>
-        <div class="container"> 
-            <nav>
-                <ul class="navbuttons">
-                    <li><a href="/"><b>Home</b></a></li>
-                    <li><a href="/#brand-section"><b>Products</b></a></li>
-                    <li><a href="/about"><b>About</b></a></li>
-                </ul>
-            </nav>
-            <a href="/" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>
-            <div class="nav-buttons">
-                <a href="/user/login" class="btn-secondary"><b>Account</b></a>
-                <a href="/user/cart" class="btn-primary"><b>Cart</b></a>
-            </div>  
-        </div>
-    </header>
 
-    <div class="split-layout">
-        <div class="panel-image">
-            <img src="/images/skin2.jpg" alt="Skincare">
-            <p class="tagline">It's time to invest in your <strong>SKIN.</strong></p>
-        </div>
+<%- include('partials/header') %>
 
-        <div class="panel-form-signup">
-            <div class="signup-box">
-                <h2 class="signup-title">Create Account</h2>
-                <div class="signup-body">
-                    <form class="signup-form" action="/user/signup" method="POST">
-
-                        <% if (error !== '') { %>
-                            <p style="color:#a36c45; font-size:14px; margin-top:10px;"><%= error %></p>
-                        <% } %>
-
-                        <label for="Fname">First Name</label>
-                        <input type="text" name="fname" id="Fname" placeholder="Enter your first name">
-
-                        <label for="Lname">Last Name</label>
-                        <input type="text" name="lname" id="Lname" placeholder="Enter your last name">
-
-                        <label for="Email">Email</label>
-                        <input type="text" name="email" id="Email" placeholder="Enter your email">
-
-                        <label for="Password">Password</label>
-                        <input type="password" name="password" id="Password" placeholder="Min 8 chars, 1 uppercase, 1 number">
-
-                        <label for="Confirm_Password">Confirm Password</label>
-                        <input type="password" name="confirmPassword" id="Confirm_Password" placeholder="Repeat your password">
-
-                        <button type="submit" class="btn-primary" id="log">Create Account</button>
-
-                        <div class="form-links">
-                            <p>Already have an account? <a href="/user/login">Log in!</a></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="auth-layout">
+    <!-- Left: Image -->
+    <div class="auth-image">
+        <img src="/images/skin2.jpg" alt="Skincare">
+        <div class="auth-image-overlay"></div>
+        <div class="auth-image-quote">
+            <p>"Invest in your skin. It's going to represent you for a very long time."</p>
+            <span>Lumiskin Philosophy</span>
         </div>
     </div>
 
+    <!-- Right: Form -->
+    <div class="auth-form-panel">
+        <div class="auth-form-box">
+            <p class="auth-eyebrow">Join Lumiskin</p>
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Start your personalized skincare journey today.</p>
+
+            <% if (error !== '') { %>
+                <div class="error-msg"><%= error %></div>
+            <% } %>
+
+            <form action="/user/signup" method="POST" onsubmit="return validateLogin()">
+                <div class="field-row">
+                    <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="fname" placeholder="Nour" required>
+                    </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="lname" placeholder="Ahmed" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Min 8 characters" required>
+                </div>
+
+                <div class="field">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" placeholder="Repeat your password" required>
+                </div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-divider"><span>or</span></div>
+
+            <p class="auth-link">
+                Already have an account? <a href="/user/login">Sign in</a>
+            </p>
+
+            <p class="terms-note">
+                By creating an account, you agree to our privacy policy and terms of service.
+            </p>
+        </div>
+    </div>
+</div>
+<script src="/js/auth.js"></script>
 </body>
 </html>

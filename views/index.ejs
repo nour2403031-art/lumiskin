@@ -7,35 +7,12 @@
     <title>Lumiskin website</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reviews.css">
-    <script src="/js/js.js"></script>
+    
     <script src="/js/reviews.js"></script>
 </head>
 
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <ul class="navbuttons">
-                    <li><a href="/"><b>Home</b></a></li>
-                    <li><a href="#brand-section"><b>Products</b></a></li>
-                    <li><a href="/about"><b>About</b></a></li>
-                </ul>
-            </nav>
-            <a href="/" class="logo">
-                <div class="logotext"><i>Lumiskin</i></div>
-            </a>
-
-            <div class="nav-buttons">
-                <% if (user !== '') { %>
-                    <span class="btn-secondary"><b><%= user %></b></span>
-                    <a href="/user/logout" class="btn-secondary"><b>Logout</b></a>
-                <% } else { %>
-                    <a href="/user/login" class="btn-secondary"><b>Account</b></a>
-                <% } %>
-                <a href="/user/cart" class="btn-secondary"><b>Cart</b></a>
-            </div>
-        </div>
-    </header>
+<body class="home-page">
+   <%- include('partials/header') %>
 
     <section class="hero">
         <div class="hero-container">
@@ -221,7 +198,7 @@
             <h1>LumiSkin</h1>
         </div>
     </footer>
-
+ 
 </body>
 
 </html>

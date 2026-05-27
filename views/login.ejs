@@ -3,60 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumiskin - Login</title>
+    <title>Login — Lumiskin</title>
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/login.css">
+       
 </head>
 <body>
 
-<header>
-    <div class="container"> 
-        <nav>
-            <ul class="navbuttons">
-                <li><a href="/"><b>Home</b></a></li>
-                <li><a href="/#brand-section"><b>Products</b></a></li>
-                <li><a href="/about"><b>About</b></a></li>
-            </ul>
-        </nav>
-        <a href="/" class="logo"><div class="logotext"><i>Lumiskin</i></div></a>
-        <div class="nav-buttons">
-            <a href="/user/login" class="btn-secondary"><b>Account</b></a>
-            <a href="/user/cart" class="btn-primary"><b>Cart</b></a>
-        </div>  
-    </div>
-</header>
-  
-<div class="split-layout">
-    <div class="panel-image">
+<%- include('partials/header') %>
+
+<div class="auth-layout">
+    <!-- Left: Image -->
+    <div class="auth-image">
         <img src="/images/skin2.jpg" alt="Skincare">
-        <p class="tagline">Time to invest in your <strong>SKIN</strong></p>
+        <div class="auth-image-overlay"></div>
+        <div class="auth-image-quote">
+            <p>"Your skin is a reflection of your inner health."</p>
+            <span>Lumiskin Philosophy</span>
+        </div>
     </div>
 
-    <div class="panel-form">
-        <div class="login-box">
-            <h2 class="login-title">Login</h2>
-            <div class="login-body">
-                <form class="login-form" action="/user/login" method="POST">
+    <!-- Right: Form -->
+    <div class="auth-form-panel">
+        <div class="auth-form-box">
+            <p class="auth-eyebrow">Welcome back</p>
+            <h1 class="auth-title">Sign In</h1>
+            <p class="auth-subtitle">Enter your details to access your account.</p>
 
-                    <% if (error !== '') { %>
-                        <p style="color:#a36c45; font-size:14px; margin-top:10px;"><%= error %></p>
-                    <% } %>
+            <% if (error !== '') { %>
+                <div class="error-msg"><%= error %></div>
+            <% } %>
 
-                    <label for="Login_Email">Email</label>
-                    <input type="text" id="Login_Email" name="email" placeholder="Enter your email" required>
+            <form action="/user/login" method="POST" onsubmit="return validateLogin()">
+                <div class="field">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
 
-                    <label for="Login_Password">Password</label>
-                    <input type="password" id="Login_Password" name="password" placeholder="Enter your password" required>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Your password" required>
+                </div>
 
-                    <button type="submit" class="btn-primary" id="log">Login</button>
+                <button type="submit" class="auth-btn">Sign In</button>
+            </form>
 
-                    <div class="form-links">
-                        <p>Don't have an account? <a href="/user/signup">Sign up</a></p>
-                    </div>
-                </form>
-            </div>
+            <div class="auth-divider"><span>or</span></div>
+
+            <p class="auth-link">
+                Don't have an account? <a href="/user/signup">Create one</a>
+            </p>
         </div>
     </div>
 </div>
-
+<script src="/js/auth.js"></script>
 </body>
 </html>

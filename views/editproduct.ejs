@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product | Lumiskin Admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>LUMISKIN</h2>
+    <p style="color:#ccc; font-size:13px; padding: 0 16px;">
+        Welcome, <%= user %>
+    </p>
+    <ul>
+        <li onclick="window.location.href='/admin'">Overview</li>
+        <li onclick="window.location.href='/admin'">Manage Products</li>
+        <li onclick="window.location.href='/admin'">Manage Users</li>
+    </ul>
+    <a href="/user/logout" 
+       style="color:#ccc; padding:16px; display:block; margin-top:20px;">
+       Logout
+    </a>
+</nav>
+
+<main class="main-content">
+    <div class="management-section">
+        <h1>Edit Product</h1>
+        <p style="color:#888; margin-bottom:20px;">
+            Update the product details below and click Save.
+        </p>
+
+        <form action="/admin/edit-product/<%= product._id %>" method="POST"
+              style="display:flex; flex-direction:column; gap:15px; max-width:500px;">
+
+            <div>
+                <label>Product Name</label><br>
+                <input type="text" 
+                       name="name" 
+                       value="<%= product.name %>" 
+                       required
+                       style="width:100%; padding:8px; margin-top:5px;">
+            </div>
+
+            <div>
+                <label>Brand</label><br>
+                <input type="text" 
+                       name="brand" 
+                       value="<%= product.brand %>" 
+                       required
+                       style="width:100%; padding:8px; margin-top:5px;">
+            </div>
+
+            <div>
+                <label>Price (EGP)</label><br>
+                <input type="number" 
+                       name="price" 
+                       value="<%= product.price %>" 
+                       required
+                       style="width:100%; padding:8px; margin-top:5px;">
+            </div>
+
+            <div>
+                <label>Category</label><br>
+                <input type="text" 
+                       name="category" 
+                       value="<%= product.category %>"
+                       style="width:100%; padding:8px; margin-top:5px;">
+            </div>
+
+            <div>
+                <label>Tag</label><br>
+                <input type="text" 
+                       name="tag" 
+                       value="<%= product.tag %>"
+                       style="width:100%; padding:8px; margin-top:5px;">
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px;">
+                <button type="submit" class="btn-add">Save Changes</button>
+                <a href="/admin" 
+                   style="padding:8px 16px; background:#888; color:white; 
+                          text-decoration:none; border-radius:4px;">
+                   Cancel
+                </a>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+</body>
+</html>
