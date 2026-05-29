@@ -1,26 +1,27 @@
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 const adminController = require('../controllers/adminController');
 
-// Visit /admin → show dashboard with all products and users
+// Dashboard
 router.get('/', adminController.getDashboard);
 
-// Admin submits add product form → save to database
+
+// Add product — supports file upload + AJAX response
 router.post('/add-product', adminController.addProduct);
 
-// Admin clicks delete on a product → remove from database
-router.get('/delete-product/:id', adminController.deleteProduct);
+// ── Person 4: DELETE via fetch() — AJAX delete without page reload ────────────
+router.delete('/delete-product/:id', adminController.deleteProduct);
+router.get('/delete-product/:id',    adminController.deleteProduct);  // fallback
 
-// Admin clicks delete on a user → remove from database
-router.get('/delete-user/:id', adminController.deleteUser);
+router.delete('/delete-user/:id', adminController.deleteUser);
+router.get('/delete-user/:id',    adminController.deleteUser);         // fallback
 
-// Admin clicks edit on a product → show edit page
-router.get('/edit-product/:id', adminController.getEditProduct);
-
-// Admin submits edit form → update in database
+// Edit product
+router.get('/edit-product/:id',  adminController.getEditProduct);
 router.post('/edit-product/:id', adminController.postEditProduct);
 
-router.get('/edit-user/:id', adminController.getEditUser);
+// Edit user
+router.get('/edit-user/:id',  adminController.getEditUser);
 router.post('/edit-user/:id', adminController.postEditUser);
 
 module.exports = router;

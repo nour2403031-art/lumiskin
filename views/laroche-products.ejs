@@ -25,8 +25,8 @@
         <div class="product-item">
             <div class="image-wrap">
                 <span class="tag-promo"><%= product.tag %></span>
-                <img src="/images/<%= product.image %>"  alt="<%= product.name %>" class="img-primary">
-                <img src="/images/<%= product.image2 %>" alt="<%= product.name %>" class="img-secondary">
+                <img src="<%= product.image && product.image.startsWith('/') ? product.image : '/images/' + product.image %>"  alt="<%= product.name %>" class="img-primary">
+                <img src="<%= product.image2 && product.image2.startsWith('/') ? product.image2 : '/images/' + product.image2 %>" alt="<%= product.name %>" class="img-secondary">
                 <button class="add-to-cart-btn"
                         onclick="addToCart('<%= product.name %>', <%= product.price %>)">
                     Add To Cart
