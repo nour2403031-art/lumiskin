@@ -7,9 +7,10 @@ mongoose.connect(process.env.MONGO_URI)
     console.log('Connected!');
 
     const adminEmail    = 'admin@miuegypt.edu.eg';
-    const adminPassword = 'Admin1234';
+    const adminPassword = 'Admin1234';           
     const adminName     = 'Admin';
 
+    
    const existing = await User.findOne({ email: adminEmail });
 if (existing) {
   await User.deleteOne({ email: adminEmail });
